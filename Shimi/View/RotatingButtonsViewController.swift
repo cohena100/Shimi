@@ -14,10 +14,7 @@ import Action
 
 class RotatingButtonsViewController: UIViewController {
     
-    enum State {
-        case left
-        case right
-    }
+    let isOn = Variable(true)
     let fadedAlpha: CGFloat = 0.2
     let notFadedAlpha: CGFloat = 1.0
     let animationDuration: TimeInterval = 1.0
@@ -29,7 +26,6 @@ class RotatingButtonsViewController: UIViewController {
         let string = NSLocalizedString("Exit", comment: "exit button title")
         return string
     }()
-    var state: State = .left
     lazy var leftButton: UIButton = {
         let button = self.createButton()
         button.backgroundColor = .green
@@ -69,7 +65,7 @@ class RotatingButtonsViewController: UIViewController {
         let anchors = leftButton.anchorWithReturnAnchors(nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         leftButtonLeftAnchor = anchors[0]
         leftButtonRightAnchor = anchors[1]
-        if self.state == .left {
+        if self.isOn.value == true {
             self.leftButton.alpha = self.notFadedAlpha
             leftButtonRightAnchor?.isActive = false
         } else {
@@ -84,7 +80,7 @@ class RotatingButtonsViewController: UIViewController {
         let anchors = rightButton.anchorWithReturnAnchors(nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         rightButtonLeftAnchor = anchors[0]
         rightButtonRightAnchor = anchors[1]
-        if self.state == .left {
+        if self.isOn.value == true {
             self.rightButton.alpha = self.fadedAlpha
             rightButtonLeftAnchor?.isActive = false
         } else {
@@ -114,7 +110,7 @@ class RotatingButtonsViewController: UIViewController {
     
     fileprivate func animateButtons() {
         isAnimating.value = true
-        let isToRight = state == .left
+        let isToRight = self.isOn.value == true
         let leftButtonAnimation = generateCompleteButtonAnimation(aView: leftButton, isToRight: isToRight)
         leftButton.layer.add(leftButtonAnimation, forKey: "leftButtonAnimation")
         let rightButtonAnimation = generateCompleteButtonAnimation(aView: rightButton,isToRight: !isToRight)
@@ -164,21 +160,21 @@ class RotatingButtonsViewController: UIViewController {
 extension RotatingButtonsViewController: CAAnimationDelegate {
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        switch state {
-        case .left:
+        switch self.isOn.value {
+        case true:
             leftButtonLeftAnchor?.isActive = false
             leftButtonRightAnchor?.isActive = true
             rightButtonLeftAnchor?.isActive = true
             rightButtonRightAnchor?.isActive = false
             view.bringSubview(toFront: leftButton)
-            state = .right
-        case .right:
+            self.isOn.value = false
+        case false:
             leftButtonLeftAnchor?.isActive = true
             leftButtonRightAnchor?.isActive = false
             rightButtonLeftAnchor?.isActive = false
             rightButtonRightAnchor?.isActive = true
             view.bringSubview(toFront: rightButton)
-            state = .left
+            self.isOn.value = true
         }
         leftButton.layoutIfNeeded()
         rightButton.layoutIfNeeded()
