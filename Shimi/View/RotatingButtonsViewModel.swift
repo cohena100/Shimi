@@ -10,15 +10,16 @@ import Foundation
 import RxSwift
 import NSObject_Rx
 
-protocol RotatingButtonsViewModelDelegate {
+protocol RotatingButtonsViewModelDelegate: class {
     var isOn: Variable<Bool> { get }
+    var state: RotatingButtonsViewController.State { get set }
 }
 
 class RotatingButtonsViewModel: NSObject {
     
     init(vc: RotatingButtonsViewModelDelegate) {
         super.init()
-        vc.isOn.value = true
+        vc.state = .left
         vc.isOn.asObservable().skip(1).subscribe(onNext: { (isOn) in
             print(isOn)
         }, onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(self.rx_disposeBag)
