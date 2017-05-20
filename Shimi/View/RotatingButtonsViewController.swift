@@ -13,19 +13,13 @@ import NSObject_Rx
 import Action
 
 class RotatingButtonsViewController: UIViewController {
-    
+    var viewModel: RotatingButtonsViewModel!
     let isOn = Variable(true)
-    let fadedAlpha: CGFloat = 0.2
-    let notFadedAlpha: CGFloat = 1.0
-    let animationDuration: TimeInterval = 1.0
-    let enterString: String = {
-        let string = NSLocalizedString("Enter", comment: "enter button title")
-        return string
-    }()
-    let exitString: String = {
-        let string = NSLocalizedString("Exit", comment: "exit button title")
-        return string
-    }()
+    let fadedAlpha: CGFloat
+    let notFadedAlpha: CGFloat
+    let animationDuration: TimeInterval
+    let enterString: String
+    let exitString: String
     lazy var leftButton: UIButton = {
         let button = self.createButton()
         button.backgroundColor = .green
@@ -43,6 +37,21 @@ class RotatingButtonsViewController: UIViewController {
     var rightButtonLeftAnchor: NSLayoutConstraint?
     var rightButtonRightAnchor: NSLayoutConstraint?
     let isAnimating = Variable(false)
+    
+    // MARK: - Init
+    
+    init(fadedAlpha: CGFloat, notFadedAlpha: CGFloat, animationDuration: TimeInterval, enterString: String, exitString: String) {
+        self.fadedAlpha = fadedAlpha
+        self.notFadedAlpha = notFadedAlpha
+        self.animationDuration = animationDuration
+        self.enterString = enterString
+        self.exitString = exitString
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Overloads
     
@@ -180,5 +189,9 @@ extension RotatingButtonsViewController: CAAnimationDelegate {
         rightButton.layoutIfNeeded()
         isAnimating.value = false
     }
+    
+}
+
+extension RotatingButtonsViewController: RotatingButtonsViewModelDelegate {
     
 }

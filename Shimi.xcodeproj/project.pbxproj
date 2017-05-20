@@ -11,6 +11,8 @@
 		E73ADF301ED014470009D4F6 /* NSObject_Rx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73ADF2C1ED014470009D4F6 /* NSObject_Rx.framework */; };
 		E73ADF311ED014470009D4F6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73ADF2D1ED014470009D4F6 /* RxCocoa.framework */; };
 		E73ADF321ED014470009D4F6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73ADF2E1ED014470009D4F6 /* RxSwift.framework */; };
+		E747B8991ED02C0100F2473B /* RotatingButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E747B8981ED02C0100F2473B /* RotatingButtonsViewModel.swift */; };
+		E747B89B1ED03ED800F2473B /* RotatingButtonsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E747B89A1ED03ED800F2473B /* RotatingButtonsBuilder.swift */; };
 		E74BAC641ED0102300723CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC631ED0102300723CA5 /* AppDelegate.swift */; };
 		E74BAC6B1ED0102300723CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74BAC6A1ED0102300723CA5 /* Assets.xcassets */; };
 		E74BAC6E1ED0102300723CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74BAC6C1ED0102300723CA5 /* LaunchScreen.storyboard */; };
@@ -47,6 +49,8 @@
 		E73ADF2C1ED014470009D4F6 /* NSObject_Rx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSObject_Rx.framework; path = Carthage/Build/iOS/NSObject_Rx.framework; sourceTree = "<group>"; };
 		E73ADF2D1ED014470009D4F6 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		E73ADF2E1ED014470009D4F6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		E747B8981ED02C0100F2473B /* RotatingButtonsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsViewModel.swift; sourceTree = "<group>"; };
+		E747B89A1ED03ED800F2473B /* RotatingButtonsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsBuilder.swift; sourceTree = "<group>"; };
 		E74BAC601ED0102300723CA5 /* Shimi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shimi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74BAC631ED0102300723CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E74BAC6A1ED0102300723CA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,7 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				E74BACA31ED0119400723CA5 /* MainViewController.swift */,
+				E747B89A1ED03ED800F2473B /* RotatingButtonsBuilder.swift */,
 				E74BACA41ED0119400723CA5 /* RotatingButtonsViewController.swift */,
+				E747B8981ED02C0100F2473B /* RotatingButtonsViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,9 +348,11 @@
 			files = (
 				E74BACA61ED0119400723CA5 /* RotatingButtonsViewController.swift in Sources */,
 				E74BACA11ED0118400723CA5 /* UIView+Anchors.swift in Sources */,
+				E747B89B1ED03ED800F2473B /* RotatingButtonsBuilder.swift in Sources */,
 				E74BACA01ED0118400723CA5 /* CAAnimationGroup+Rx.swift in Sources */,
 				E74BAC641ED0102300723CA5 /* AppDelegate.swift in Sources */,
 				E74BACA51ED0119400723CA5 /* MainViewController.swift in Sources */,
+				E747B8991ED02C0100F2473B /* RotatingButtonsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

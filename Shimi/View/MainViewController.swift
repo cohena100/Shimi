@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
     }
     
     fileprivate func setupRotatingButtonsViewController() {
-        let contentVC = RotatingButtonsViewController()
+        let contentVC = RotatingButtonsBuilder().build()
         addChildViewController(contentVC)
         contentVC.view.frame = .zero
         view.addSubview(contentVC.view)
