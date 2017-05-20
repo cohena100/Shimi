@@ -46,7 +46,7 @@ class RotatingButtonsViewController: UIViewController {
     var leftButtonRightAnchor: NSLayoutConstraint?
     var rightButtonLeftAnchor: NSLayoutConstraint?
     var rightButtonRightAnchor: NSLayoutConstraint?
-    let isInAnimation = Variable(false)
+    let isAnimating = Variable(false)
     
     // MARK: - Overloads
     
@@ -101,7 +101,7 @@ class RotatingButtonsViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let action = CocoaAction(workFactory: { (_) -> Observable<Void> in
-            if !self.isInAnimation.value {
+            if !self.isAnimating.value {
                 self.animateButtons()
             }
             return .empty()
@@ -113,7 +113,7 @@ class RotatingButtonsViewController: UIViewController {
     // MARK: - Animations
     
     fileprivate func animateButtons() {
-        isInAnimation.value = true
+        isAnimating.value = true
         let isToRight = state == .left
         let leftButtonAnimation = generateCompleteButtonAnimation(aView: leftButton, isToRight: isToRight)
         leftButton.layer.add(leftButtonAnimation, forKey: "leftButtonAnimation")
@@ -182,7 +182,7 @@ extension RotatingButtonsViewController: CAAnimationDelegate {
         }
         leftButton.layoutIfNeeded()
         rightButton.layoutIfNeeded()
-        isInAnimation.value = false
+        isAnimating.value = false
     }
     
 }
