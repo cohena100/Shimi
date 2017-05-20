@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E74BAC5F1ED0102300723CA5"
-               BuildableName = "Shimi.app"
-               BlueprintName = "Shimi"
-               ReferencedContainer = "container:Shimi.xcodeproj">
+               BlueprintIdentifier = "188C6D901C47B2B20092101A"
+               BuildableName = "NSObject_Rx.framework"
+               BlueprintName = "NSObject_Rx"
+               ReferencedContainer = "container:NSObject-Rx.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,36 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E74BAC731ED0102300723CA5"
-               BuildableName = "ShimiTests.xctest"
-               BlueprintName = "ShimiTests"
-               ReferencedContainer = "container:Shimi.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E74BAC7E1ED0102300723CA5"
-               BuildableName = "ShimiUITests.xctest"
-               BlueprintName = "ShimiUITests"
-               ReferencedContainer = "container:Shimi.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E74BAC5F1ED0102300723CA5"
-            BuildableName = "Shimi.app"
-            BlueprintName = "Shimi"
-            ReferencedContainer = "container:Shimi.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -71,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E74BAC5F1ED0102300723CA5"
-            BuildableName = "Shimi.app"
-            BlueprintName = "Shimi"
-            ReferencedContainer = "container:Shimi.xcodeproj">
+            BlueprintIdentifier = "188C6D901C47B2B20092101A"
+            BuildableName = "NSObject_Rx.framework"
+            BlueprintName = "NSObject_Rx"
+            ReferencedContainer = "container:NSObject-Rx.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -90,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E74BAC5F1ED0102300723CA5"
-            BuildableName = "Shimi.app"
-            BlueprintName = "Shimi"
-            ReferencedContainer = "container:Shimi.xcodeproj">
+            BlueprintIdentifier = "188C6D901C47B2B20092101A"
+            BuildableName = "NSObject_Rx.framework"
+            BlueprintName = "NSObject_Rx"
+            ReferencedContainer = "container:NSObject-Rx.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

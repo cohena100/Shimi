@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E73ADF2F1ED014470009D4F6 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73ADF2B1ED014470009D4F6 /* Action.framework */; };
+		E73ADF301ED014470009D4F6 /* NSObject_Rx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73ADF2C1ED014470009D4F6 /* NSObject_Rx.framework */; };
+		E73ADF311ED014470009D4F6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73ADF2D1ED014470009D4F6 /* RxCocoa.framework */; };
+		E73ADF321ED014470009D4F6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73ADF2E1ED014470009D4F6 /* RxSwift.framework */; };
 		E74BAC641ED0102300723CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC631ED0102300723CA5 /* AppDelegate.swift */; };
-		E74BAC661ED0102300723CA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC651ED0102300723CA5 /* ViewController.swift */; };
 		E74BAC691ED0102300723CA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74BAC671ED0102300723CA5 /* Main.storyboard */; };
 		E74BAC6B1ED0102300723CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74BAC6A1ED0102300723CA5 /* Assets.xcassets */; };
 		E74BAC6E1ED0102300723CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74BAC6C1ED0102300723CA5 /* LaunchScreen.storyboard */; };
 		E74BAC791ED0102300723CA5 /* ShimiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC781ED0102300723CA5 /* ShimiTests.swift */; };
 		E74BAC841ED0102300723CA5 /* ShimiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC831ED0102300723CA5 /* ShimiUITests.swift */; };
+		E74BACA01ED0118400723CA5 /* CAAnimationGroup+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC9E1ED0118400723CA5 /* CAAnimationGroup+Rx.swift */; };
+		E74BACA11ED0118400723CA5 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC9F1ED0118400723CA5 /* UIView+Anchors.swift */; };
+		E74BACA51ED0119400723CA5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BACA31ED0119400723CA5 /* MainViewController.swift */; };
+		E74BACA61ED0119400723CA5 /* RotatingButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BACA41ED0119400723CA5 /* RotatingButtonsViewController.swift */; };
+		E74BACA91ED011BB00723CA5 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = E74BACA71ED011BB00723CA5 /* Cartfile */; };
+		E74BACAA1ED011BB00723CA5 /* resources.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E74BACA81ED011BB00723CA5 /* resources.xcconfig */; };
+		E74BACAC1ED011D500723CA5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E74BACAB1ED011D500723CA5 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E73ADF2B1ED014470009D4F6 /* Action.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Action.framework; path = Carthage/Build/iOS/Action.framework; sourceTree = "<group>"; };
+		E73ADF2C1ED014470009D4F6 /* NSObject_Rx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSObject_Rx.framework; path = Carthage/Build/iOS/NSObject_Rx.framework; sourceTree = "<group>"; };
+		E73ADF2D1ED014470009D4F6 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		E73ADF2E1ED014470009D4F6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E74BAC601ED0102300723CA5 /* Shimi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shimi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74BAC631ED0102300723CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E74BAC651ED0102300723CA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E74BAC681ED0102300723CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E74BAC6A1ED0102300723CA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E74BAC6D1ED0102300723CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +60,13 @@
 		E74BAC7F1ED0102300723CA5 /* ShimiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShimiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74BAC831ED0102300723CA5 /* ShimiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimiUITests.swift; sourceTree = "<group>"; };
 		E74BAC851ED0102300723CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E74BAC9E1ED0118400723CA5 /* CAAnimationGroup+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAAnimationGroup+Rx.swift"; sourceTree = "<group>"; };
+		E74BAC9F1ED0118400723CA5 /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
+		E74BACA31ED0119400723CA5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E74BACA41ED0119400723CA5 /* RotatingButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsViewController.swift; sourceTree = "<group>"; };
+		E74BACA71ED011BB00723CA5 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
+		E74BACA81ED011BB00723CA5 /* resources.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = resources.xcconfig; sourceTree = SOURCE_ROOT; };
+		E74BACAB1ED011D500723CA5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E73ADF2F1ED014470009D4F6 /* Action.framework in Frameworks */,
+				E73ADF301ED014470009D4F6 /* NSObject_Rx.framework in Frameworks */,
+				E73ADF311ED014470009D4F6 /* RxCocoa.framework in Frameworks */,
+				E73ADF321ED014470009D4F6 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +98,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E73ADF2A1ED014470009D4F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E73ADF2B1ED014470009D4F6 /* Action.framework */,
+				E73ADF2C1ED014470009D4F6 /* NSObject_Rx.framework */,
+				E73ADF2D1ED014470009D4F6 /* RxCocoa.framework */,
+				E73ADF2E1ED014470009D4F6 /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E74BAC571ED0102300723CA5 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +116,7 @@
 				E74BAC771ED0102300723CA5 /* ShimiTests */,
 				E74BAC821ED0102300723CA5 /* ShimiUITests */,
 				E74BAC611ED0102300723CA5 /* Products */,
+				E73ADF2A1ED014470009D4F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +133,16 @@
 		E74BAC621ED0102300723CA5 /* Shimi */ = {
 			isa = PBXGroup;
 			children = (
+				E74BAC9D1ED0118400723CA5 /* Extensions */,
+				E74BACA21ED0119400723CA5 /* View */,
 				E74BAC631ED0102300723CA5 /* AppDelegate.swift */,
-				E74BAC651ED0102300723CA5 /* ViewController.swift */,
 				E74BAC671ED0102300723CA5 /* Main.storyboard */,
 				E74BAC6A1ED0102300723CA5 /* Assets.xcassets */,
 				E74BAC6C1ED0102300723CA5 /* LaunchScreen.storyboard */,
 				E74BAC6F1ED0102300723CA5 /* Info.plist */,
+				E74BACAB1ED011D500723CA5 /* .gitignore */,
+				E74BACA71ED011BB00723CA5 /* Cartfile */,
+				E74BACA81ED011BB00723CA5 /* resources.xcconfig */,
 			);
 			path = Shimi;
 			sourceTree = "<group>";
@@ -125,6 +165,24 @@
 			path = ShimiUITests;
 			sourceTree = "<group>";
 		};
+		E74BAC9D1ED0118400723CA5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E74BAC9E1ED0118400723CA5 /* CAAnimationGroup+Rx.swift */,
+				E74BAC9F1ED0118400723CA5 /* UIView+Anchors.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E74BACA21ED0119400723CA5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E74BACA31ED0119400723CA5 /* MainViewController.swift */,
+				E74BACA41ED0119400723CA5 /* RotatingButtonsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +193,7 @@
 				E74BAC5C1ED0102300723CA5 /* Sources */,
 				E74BAC5D1ED0102300723CA5 /* Frameworks */,
 				E74BAC5E1ED0102300723CA5 /* Resources */,
+				E73ADF331ED014640009D4F6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -237,7 +296,10 @@
 			files = (
 				E74BAC6E1ED0102300723CA5 /* LaunchScreen.storyboard in Resources */,
 				E74BAC6B1ED0102300723CA5 /* Assets.xcassets in Resources */,
+				E74BACA91ED011BB00723CA5 /* Cartfile in Resources */,
 				E74BAC691ED0102300723CA5 /* Main.storyboard in Resources */,
+				E74BACAC1ED011D500723CA5 /* .gitignore in Resources */,
+				E74BACAA1ED011BB00723CA5 /* resources.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,13 +319,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E73ADF331ED014640009D4F6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NSObject_Rx.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E74BAC5C1ED0102300723CA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E74BAC661ED0102300723CA5 /* ViewController.swift in Sources */,
+				E74BACA61ED0119400723CA5 /* RotatingButtonsViewController.swift in Sources */,
+				E74BACA11ED0118400723CA5 /* UIView+Anchors.swift in Sources */,
+				E74BACA01ED0118400723CA5 /* CAAnimationGroup+Rx.swift in Sources */,
 				E74BAC641ED0102300723CA5 /* AppDelegate.swift in Sources */,
+				E74BACA51ED0119400723CA5 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +503,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4JEK9RGB6D;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Shimi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsilimiligilitili.Shimi;
@@ -431,6 +520,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4JEK9RGB6D;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Shimi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsilimiligilitili.Shimi;
@@ -516,6 +609,7 @@
 				E74BAC8A1ED0102400723CA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E74BAC8B1ED0102400723CA5 /* Build configuration list for PBXNativeTarget "ShimiTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +618,7 @@
 				E74BAC8D1ED0102400723CA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E74BAC8E1ED0102400723CA5 /* Build configuration list for PBXNativeTarget "ShimiUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +627,7 @@
 				E74BAC901ED0102400723CA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

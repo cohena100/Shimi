@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0710"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E74BAC5F1ED0102300723CA5"
-               BuildableName = "Shimi.app"
-               BlueprintName = "Shimi"
-               ReferencedContainer = "container:Shimi.xcodeproj">
+               BlueprintIdentifier = "5E9E831A1BF79B3000C85B46"
+               BuildableName = "Demo.app"
+               BlueprintName = "Demo"
+               ReferencedContainer = "container:Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E74BAC731ED0102300723CA5"
-               BuildableName = "ShimiTests.xctest"
-               BlueprintName = "ShimiTests"
-               ReferencedContainer = "container:Shimi.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E74BAC7E1ED0102300723CA5"
-               BuildableName = "ShimiUITests.xctest"
-               BlueprintName = "ShimiUITests"
-               ReferencedContainer = "container:Shimi.xcodeproj">
+               BlueprintIdentifier = "5E9E832E1BF79B3000C85B46"
+               BuildableName = "DemoTests.xctest"
+               BlueprintName = "DemoTests"
+               ReferencedContainer = "container:Demo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E74BAC5F1ED0102300723CA5"
-            BuildableName = "Shimi.app"
-            BlueprintName = "Shimi"
-            ReferencedContainer = "container:Shimi.xcodeproj">
+            BlueprintIdentifier = "5E9E831A1BF79B3000C85B46"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
+            ReferencedContainer = "container:Demo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +65,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E74BAC5F1ED0102300723CA5"
-            BuildableName = "Shimi.app"
-            BlueprintName = "Shimi"
-            ReferencedContainer = "container:Shimi.xcodeproj">
+            BlueprintIdentifier = "5E9E831A1BF79B3000C85B46"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
+            ReferencedContainer = "container:Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +84,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E74BAC5F1ED0102300723CA5"
-            BuildableName = "Shimi.app"
-            BlueprintName = "Shimi"
-            ReferencedContainer = "container:Shimi.xcodeproj">
+            BlueprintIdentifier = "5E9E831A1BF79B3000C85B46"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
+            ReferencedContainer = "container:Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

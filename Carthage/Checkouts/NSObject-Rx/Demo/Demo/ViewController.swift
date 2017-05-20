@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  Shimi
+//  Demo
 //
-//  Created by Pango-mac on 20/05/2017.
-//  Copyright © 2017 TsiliGiliMiliTili. All rights reserved.
+//  Created by Ash Furrow on 2015-11-14.
+//  Copyright © 2015 Ash Furrow. All rights reserved.
 //
 
 import UIKit
