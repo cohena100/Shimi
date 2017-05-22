@@ -25,14 +25,21 @@ class RotatingButtonsViewController: UIViewController {
     let animationDuration: TimeInterval
     let enterString: String
     let exitString: String
+    var leftButtonAnimation: CAAnimationGroup!
     lazy var leftButton: UIButton = {
         let button = self.createButton()
+        self.createTapEvent(forButton: button).subscribe(onNext: { _ in
+            self.handleEndAnimation(isLeftButton: true)
+            }).addDisposableTo(self.rx_disposeBag)
         button.backgroundColor = .green
         button.setTitle(self.enterString, for: .normal)
         return button
     }()
     lazy var rightButton: UIButton = {
         let button = self.createButton()
+        self.createTapEvent(forButton: button).subscribe(onNext: { _ in
+            self.handleEndAnimation(isLeftButton: false)
+            }).addDisposableTo(self.rx_disposeBag)
         button.backgroundColor = .red
         button.setTitle(self.exitString, for: .normal)
         return button
@@ -41,7 +48,6 @@ class RotatingButtonsViewController: UIViewController {
     var leftButtonRightAnchor: NSLayoutConstraint?
     var rightButtonLeftAnchor: NSLayoutConstraint?
     var rightButtonRightAnchor: NSLayoutConstraint?
-    let isAnimating = Variable(false)
     
     // MARK: - Init
     
@@ -62,6 +68,15 @@ class RotatingButtonsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let button1 = UIButton()
+        let button2 = UIButton()
+        let action = Action<String,String> { input in
+            print(input)
+            return .just(input)
+        }
+        button1.rx.bind(to:action) {_ in return "Hello"}
+        button2.rx.bind(to:action) {_ in return "Goodbye"}
+        
         view.backgroundColor = .white
         setup()
     }
@@ -104,33 +119,58 @@ class RotatingButtonsViewController: UIViewController {
     }
     
     fileprivate func createButton() -> UIButton {
-        var button = UIButton(type:.system)
+        let button = UIButton(type:.system)
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitleColor(.white, for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        let action = CocoaAction(workFactory: { (_) -> Observable<Void> in
-            if !self.isAnimating.value {
-                self.animateButtons()
-            }
-            return .empty()
-        })
-        button.rx.action = action
         return button
     }
     
-    // MARK: - Animations
-    
-    fileprivate func animateButtons() {
-        isAnimating.value = true
-        let isToRight = self.state == .left
-        let leftButtonAnimation = generateCompleteButtonAnimation(aView: leftButton, isToRight: isToRight)
-        leftButton.layer.add(leftButtonAnimation, forKey: "leftButtonAnimation")
-        let rightButtonAnimation = generateCompleteButtonAnimation(aView: rightButton,isToRight: !isToRight)
-        rightButtonAnimation.delegate = self
-        rightButton.layer.add(rightButtonAnimation, forKey: "rightButtonAnimation")
+    fileprivate func createTapEvent(forButton button: UIButton) -> Observable<Bool> {
+        return button.rx.tap.map { _ -> () in
+            let isToRight = self.state == .left
+            self.leftButtonAnimation = self.generateCompleteButtonAnimation(aView: self.leftButton, isToRight: isToRight)
+            }.flatMap { _ -> Observable<Bool> in
+                DispatchQueue.main.async {
+                    let isToRight = self.state == .left
+                    self.leftButton.layer.add(self.leftButtonAnimation, forKey: "leftButtonAnimation")
+                    let rightButtonAnimation = self.generateCompleteButtonAnimation(aView: self.rightButton,isToRight: !isToRight)
+                    self.rightButton.layer.add(rightButtonAnimation, forKey: "rightButtonAnimation")
+                }
+                return self.leftButtonAnimation.rx.animationDidStop
+            }
     }
+    
+    fileprivate func handleEndAnimation(isLeftButton: Bool) {
+        switch self.state {
+        case .left:
+            self.leftButtonLeftAnchor?.isActive = false
+            self.leftButtonRightAnchor?.isActive = true
+            self.rightButtonLeftAnchor?.isActive = true
+            self.rightButtonRightAnchor?.isActive = false
+            self.view.bringSubview(toFront: self.leftButton)
+            self.state = .right
+            if isLeftButton {
+                self.isOn.value = true
+            }
+        case .right:
+            self.leftButtonLeftAnchor?.isActive = true
+            self.leftButtonRightAnchor?.isActive = false
+            self.rightButtonLeftAnchor?.isActive = false
+            self.rightButtonRightAnchor?.isActive = true
+            self.view.bringSubview(toFront: self.rightButton)
+            self.state = .left
+            if !isLeftButton {
+                self.isOn.value = false
+            }
+        }
+        self.leftButton.layoutIfNeeded()
+        self.rightButton.layoutIfNeeded()
+    }
+    
+    // MARK: - Animations
     
     fileprivate func generateCompleteButtonAnimation(aView: UIView, isToRight: Bool) -> CAAnimationGroup {
         let animation = CAAnimationGroup()
@@ -170,32 +210,6 @@ class RotatingButtonsViewController: UIViewController {
 }
 
 // MARK: - Extensions -
-
-extension RotatingButtonsViewController: CAAnimationDelegate {
-    
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        switch self.state {
-        case .left:
-            leftButtonLeftAnchor?.isActive = false
-            leftButtonRightAnchor?.isActive = true
-            rightButtonLeftAnchor?.isActive = true
-            rightButtonRightAnchor?.isActive = false
-            view.bringSubview(toFront: leftButton)
-            self.state = .right
-        case .right:
-            leftButtonLeftAnchor?.isActive = true
-            leftButtonRightAnchor?.isActive = false
-            rightButtonLeftAnchor?.isActive = false
-            rightButtonRightAnchor?.isActive = true
-            view.bringSubview(toFront: rightButton)
-            self.state = .left
-        }
-        leftButton.layoutIfNeeded()
-        rightButton.layoutIfNeeded()
-        isAnimating.value = false
-    }
-    
-}
 
 extension RotatingButtonsViewController: RotatingButtonsViewModelDelegate {
     
