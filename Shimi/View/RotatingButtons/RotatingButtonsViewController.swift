@@ -26,7 +26,6 @@ class RotatingButtonsViewController: UIViewController {
     let enterString: String
     let exitString: String
     var leftButtonAnimation: CAAnimationGroup!
-    var isAnimating = false
     lazy var leftButton: UIButton = {
         let button = self.createButton()
         self.createTapEvent(forButton: button, isLeftButton: true).subscribe(onNext: { _ in }).addDisposableTo(self.rx_disposeBag)
@@ -117,8 +116,7 @@ class RotatingButtonsViewController: UIViewController {
     }
     
     fileprivate func createTapEvent(forButton button: UIButton, isLeftButton: Bool) -> Observable<Void> {
-        return button.rx.tap.filter { !self.isAnimating }.map { _ -> () in
-            self.isAnimating = true
+        return button.rx.tap.filter { self.leftButtonAnimation == nil }.map { _ -> () in
             let isToRight = self.state == .left
             self.leftButtonAnimation = self.generateCompleteButtonAnimation(aView: self.leftButton, isToRight: isToRight)
             }.flatMap { _ -> Observable<Bool> in
@@ -142,7 +140,7 @@ class RotatingButtonsViewController: UIViewController {
                     self.isOn.value = false
                 }
                 self.state = isStateLeft ? .right : .left
-                self.isAnimating = false
+                self.leftButtonAnimation = nil
                 self.leftButton.layoutIfNeeded()
                 self.rightButton.layoutIfNeeded()
         }
