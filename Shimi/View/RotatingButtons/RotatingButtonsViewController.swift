@@ -117,7 +117,7 @@ class RotatingButtonsViewController: UIViewController {
     }
     
     fileprivate func createTapEvent(forButton button: UIButton, isLeftButton: Bool) -> Observable<Void> {
-        return button.rx.tap.asObservable().filter { !self.isAnimating }.map { _ -> () in
+        return button.rx.tap.filter { !self.isAnimating }.map { _ -> () in
             self.isAnimating = true
             let isToRight = self.state == .left
             self.leftButtonAnimation = self.generateCompleteButtonAnimation(aView: self.leftButton, isToRight: isToRight)
