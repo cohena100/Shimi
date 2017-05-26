@@ -130,31 +130,21 @@ class RotatingButtonsViewController: UIViewController {
                 }
                 return self.leftButtonAnimation.rx.animationDidStop
             }.map { _ -> () in
-                switch self.state {
-                case .left:
-                    self.leftButtonLeftAnchor?.isActive = false
-                    self.leftButtonRightAnchor?.isActive = true
-                    self.rightButtonLeftAnchor?.isActive = true
-                    self.rightButtonRightAnchor?.isActive = false
-                    self.view.bringSubview(toFront: self.leftButton)
-                    self.state = .right
-                    if isLeftButton {
-                        self.isOn.value = true
-                    }
-                case .right:
-                    self.leftButtonLeftAnchor?.isActive = true
-                    self.leftButtonRightAnchor?.isActive = false
-                    self.rightButtonLeftAnchor?.isActive = false
-                    self.rightButtonRightAnchor?.isActive = true
-                    self.view.bringSubview(toFront: self.rightButton)
-                    self.state = .left
-                    if !isLeftButton {
-                        self.isOn.value = false
-                    }
+                let isStateLeft = self.state == .left
+                self.leftButtonLeftAnchor?.isActive = isStateLeft ? false : true
+                self.leftButtonRightAnchor?.isActive = isStateLeft ? true : false
+                self.rightButtonLeftAnchor?.isActive = isStateLeft ? true : false
+                self.rightButtonRightAnchor?.isActive = isStateLeft ? false : true
+                self.view.bringSubview(toFront: (isStateLeft ? self.leftButton : self.rightButton))
+                if isStateLeft && isLeftButton {
+                    self.isOn.value = true
+                } else if !isStateLeft && !isLeftButton {
+                    self.isOn.value = false
                 }
+                self.state = isStateLeft ? .right : .left
+                self.isAnimating = false
                 self.leftButton.layoutIfNeeded()
                 self.rightButton.layoutIfNeeded()
-                self.isAnimating = false
         }
     }
     
