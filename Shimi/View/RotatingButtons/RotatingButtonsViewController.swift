@@ -189,6 +189,4 @@ class RotatingButtonsViewController: UIViewController {
 
 // MARK: - Extensions -
 
-extension RotatingButtonsViewController: RotatingButtonsViewModelDelegate {
-    
-}
+extension RotatingButtonsViewController: RotatingButtonsViewModelDelegate {}
