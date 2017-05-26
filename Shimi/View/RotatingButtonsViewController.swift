@@ -68,15 +68,6 @@ class RotatingButtonsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let button1 = UIButton()
-        let button2 = UIButton()
-        let action = Action<String,String> { input in
-            print(input)
-            return .just(input)
-        }
-        button1.rx.bind(to:action) {_ in return "Hello"}
-        button2.rx.bind(to:action) {_ in return "Goodbye"}
-        
         view.backgroundColor = .white
         setup()
     }
