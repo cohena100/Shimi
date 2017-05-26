@@ -29,18 +29,14 @@ class RotatingButtonsViewController: UIViewController {
     var isAnimating = false
     lazy var leftButton: UIButton = {
         let button = self.createButton()
-        self.createTapEvent(forButton: button).subscribe(onNext: { _ in
-            self.handleEndAnimation(isLeftButton: true)
-            }).addDisposableTo(self.rx_disposeBag)
+        self.createTapEvent(forButton: button, isLeftButton: true).subscribe(onNext: { _ in }).addDisposableTo(self.rx_disposeBag)
         button.backgroundColor = .green
         button.setTitle(self.enterString, for: .normal)
         return button
     }()
     lazy var rightButton: UIButton = {
         let button = self.createButton()
-        self.createTapEvent(forButton: button).subscribe(onNext: { _ in
-            self.handleEndAnimation(isLeftButton: false)
-            }).addDisposableTo(self.rx_disposeBag)
+        self.createTapEvent(forButton: button, isLeftButton: false).subscribe(onNext: { _ in }).addDisposableTo(self.rx_disposeBag)
         button.backgroundColor = .red
         button.setTitle(self.exitString, for: .normal)
         return button
@@ -120,7 +116,7 @@ class RotatingButtonsViewController: UIViewController {
         return button
     }
     
-    fileprivate func createTapEvent(forButton button: UIButton) -> Observable<Bool> {
+    fileprivate func createTapEvent(forButton button: UIButton, isLeftButton: Bool) -> Observable<Void> {
         return button.rx.tap.asObservable().filter { !self.isAnimating }.map { _ -> () in
             self.isAnimating = true
             let isToRight = self.state == .left
@@ -133,35 +129,33 @@ class RotatingButtonsViewController: UIViewController {
                     self.rightButton.layer.add(rightButtonAnimation, forKey: "rightButtonAnimation")
                 }
                 return self.leftButtonAnimation.rx.animationDidStop
-            }
-    }
-    
-    fileprivate func handleEndAnimation(isLeftButton: Bool) {
-        switch self.state {
-        case .left:
-            self.leftButtonLeftAnchor?.isActive = false
-            self.leftButtonRightAnchor?.isActive = true
-            self.rightButtonLeftAnchor?.isActive = true
-            self.rightButtonRightAnchor?.isActive = false
-            self.view.bringSubview(toFront: self.leftButton)
-            self.state = .right
-            if isLeftButton {
-                self.isOn.value = true
-            }
-        case .right:
-            self.leftButtonLeftAnchor?.isActive = true
-            self.leftButtonRightAnchor?.isActive = false
-            self.rightButtonLeftAnchor?.isActive = false
-            self.rightButtonRightAnchor?.isActive = true
-            self.view.bringSubview(toFront: self.rightButton)
-            self.state = .left
-            if !isLeftButton {
-                self.isOn.value = false
-            }
+            }.map { _ -> () in
+                switch self.state {
+                case .left:
+                    self.leftButtonLeftAnchor?.isActive = false
+                    self.leftButtonRightAnchor?.isActive = true
+                    self.rightButtonLeftAnchor?.isActive = true
+                    self.rightButtonRightAnchor?.isActive = false
+                    self.view.bringSubview(toFront: self.leftButton)
+                    self.state = .right
+                    if isLeftButton {
+                        self.isOn.value = true
+                    }
+                case .right:
+                    self.leftButtonLeftAnchor?.isActive = true
+                    self.leftButtonRightAnchor?.isActive = false
+                    self.rightButtonLeftAnchor?.isActive = false
+                    self.rightButtonRightAnchor?.isActive = true
+                    self.view.bringSubview(toFront: self.rightButton)
+                    self.state = .left
+                    if !isLeftButton {
+                        self.isOn.value = false
+                    }
+                }
+                self.leftButton.layoutIfNeeded()
+                self.rightButton.layoutIfNeeded()
+                self.isAnimating = false
         }
-        self.leftButton.layoutIfNeeded()
-        self.rightButton.layoutIfNeeded()
-        self.isAnimating = false
     }
     
     // MARK: - Animations
