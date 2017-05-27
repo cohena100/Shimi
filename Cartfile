@@ -1,3 +1,4 @@
 github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/NSObject-Rx"
 github "RxSwiftCommunity/Action"
+github "RxSwiftCommunity/RxRealm"
