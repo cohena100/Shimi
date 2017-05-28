@@ -9,6 +9,8 @@
 import Foundation
 import RxSwift
 import NSObject_Rx
+import RxRealm
+import RealmSwift
 
 protocol RotatingButtonsViewModelDelegate: class {
     var isOn: Variable<Bool> { get }
@@ -21,7 +23,30 @@ class RotatingButtonsViewModel: NSObject {
         super.init()
         vc.state = .left
         vc.isOn.asObservable().skip(1).subscribe(onNext: { (isOn) in
-            print(isOn)
+            let realm = try! Realm()
+            let entries = realm.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
+            if entries.count == 0 {
+                if isOn {
+                    try! realm.write {
+                        realm.add(Entry())
+                    }
+                }
+            } else if isOn {
+                if let _ = entries[0].exit {
+                    try! realm.write {
+                        realm.add(Entry())
+                    }
+                } else {
+                    try! realm.write {
+                        entries[0].enter = NSDate()
+                    }
+                }
+            } else {
+                try! realm.write {
+                    entries[0].exit = NSDate()
+                }
+            }
+            print(entries)
         }, onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(self.rx_disposeBag)
     }
     

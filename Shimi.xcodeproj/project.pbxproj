@@ -25,7 +25,10 @@
 		E74BACA91ED011BB00723CA5 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = E74BACA71ED011BB00723CA5 /* Cartfile */; };
 		E74BACAA1ED011BB00723CA5 /* resources.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E74BACA81ED011BB00723CA5 /* resources.xcconfig */; };
 		E74BACAC1ED011D500723CA5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E74BACAB1ED011D500723CA5 /* .gitignore */; };
+		E75DAD371EDAB79F00C0A4C4 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */; };
+		E75DAD391EDAB7F600C0A4C4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DAD381EDAB7F600C0A4C4 /* Realm.framework */; };
 		E7AF6BA41ED9819B00EC7C2C /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */; };
+		E7AF6BA71ED9828100EC7C2C /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF6BA61ED9828100EC7C2C /* Entry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +73,10 @@
 		E74BACA71ED011BB00723CA5 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		E74BACA81ED011BB00723CA5 /* resources.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = resources.xcconfig; sourceTree = SOURCE_ROOT; };
 		E74BACAB1ED011D500723CA5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		E75DAD381EDAB7F600C0A4C4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
+		E7AF6BA61ED9828100EC7C2C /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,8 @@
 				E73ADF301ED014470009D4F6 /* NSObject_Rx.framework in Frameworks */,
 				E73ADF311ED014470009D4F6 /* RxCocoa.framework in Frameworks */,
 				E73ADF321ED014470009D4F6 /* RxSwift.framework in Frameworks */,
+				E75DAD391EDAB7F600C0A4C4 /* Realm.framework in Frameworks */,
+				E75DAD371EDAB79F00C0A4C4 /* RealmSwift.framework in Frameworks */,
 				E7AF6BA41ED9819B00EC7C2C /* RxRealm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +124,8 @@
 		E73ADF2A1ED014470009D4F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E75DAD381EDAB7F600C0A4C4 /* Realm.framework */,
+				E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */,
 				E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */,
 				E73ADF2B1ED014470009D4F6 /* Action.framework */,
 				E73ADF2C1ED014470009D4F6 /* NSObject_Rx.framework */,
@@ -149,6 +159,7 @@
 		E74BAC621ED0102300723CA5 /* Shimi */ = {
 			isa = PBXGroup;
 			children = (
+				E7AF6BA51ED9826A00EC7C2C /* Model */,
 				E74BAC9D1ED0118400723CA5 /* Extensions */,
 				E74BACA21ED0119400723CA5 /* View */,
 				E74BAC631ED0102300723CA5 /* AppDelegate.swift */,
@@ -196,6 +207,14 @@
 				E74BACA31ED0119400723CA5 /* MainViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E7AF6BA51ED9826A00EC7C2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF6BA61ED9828100EC7C2C /* Entry.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +364,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRealm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 			);
 			outputPaths = (
 			);
@@ -359,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7AF6BA71ED9828100EC7C2C /* Entry.swift in Sources */,
 				E71F564D1ED82DF60078EFAD /* RotatingButtonsViewController.swift in Sources */,
 				E74BACA11ED0118400723CA5 /* UIView+Anchors.swift in Sources */,
 				E71F564C1ED82DF60078EFAD /* RotatingButtonsBuilder.swift in Sources */,
