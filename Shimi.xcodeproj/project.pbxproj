@@ -569,6 +569,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4JEK9RGB6D;
+				FRAMEWORK_SEARCH_PATHS = "/Users/pango-mac/work/Shimi/Carthage/Build/iOS";
 				INFOPLIST_FILE = ShimiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsilimiligilitili.ShimiTests;
@@ -584,6 +585,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4JEK9RGB6D;
+				FRAMEWORK_SEARCH_PATHS = "/Users/pango-mac/work/Shimi/Carthage/Build/iOS";
 				INFOPLIST_FILE = ShimiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsilimiligilitili.ShimiTests;

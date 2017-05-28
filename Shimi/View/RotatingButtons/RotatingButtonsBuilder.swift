@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class RotatingButtonsBuilder {
     
@@ -14,7 +15,8 @@ class RotatingButtonsBuilder {
         let enterString = NSLocalizedString("Enter", comment: "enter button title")
         let exitString = NSLocalizedString("Exit", comment: "exit button title")
         let vc = RotatingButtonsViewController(fadedAlpha: 0.2, notFadedAlpha: 1.0, animationDuration: 1.0, enterString: enterString, exitString: exitString)
-        let viewModel = RotatingButtonsViewModel(vc: vc)
+        let db = try! Realm()
+        let viewModel = RotatingButtonsViewModel(db: db, vc: vc)
         vc.viewModel = viewModel
         return vc
     }

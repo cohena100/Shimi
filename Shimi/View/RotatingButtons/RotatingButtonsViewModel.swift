@@ -13,41 +13,50 @@ import RxRealm
 import RealmSwift
 
 protocol RotatingButtonsViewModelDelegate: class {
-    var isOn: Variable<Bool> { get }
-    var state: RotatingButtonsViewController.State { get set }
+    var state: RotatingButtonsViewModel.State { get set }
 }
 
 class RotatingButtonsViewModel: NSObject {
+    enum State {
+        case left
+        case right
+    }
+
+    let isOn = Variable(true)
+    let db: Realm
     
-    init(vc: RotatingButtonsViewModelDelegate) {
+    init(db: Realm, vc: RotatingButtonsViewModelDelegate?) {
+        self.db = db
+        vc?.state = .left
         super.init()
-        vc.state = .left
-        vc.isOn.asObservable().skip(1).subscribe(onNext: { (isOn) in
-            let realm = try! Realm()
-            let entries = realm.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
-            if entries.count == 0 {
-                if isOn {
-                    try! realm.write {
-                        realm.add(Entry())
-                    }
-                }
-            } else if isOn {
-                if let _ = entries[0].exit {
-                    try! realm.write {
-                        realm.add(Entry())
-                    }
-                } else {
-                    try! realm.write {
-                        entries[0].enter = NSDate()
-                    }
-                }
-            } else {
-                try! realm.write {
-                    entries[0].exit = NSDate()
+        self.isOn.asObservable().skip(1).subscribe(onNext: { (isOn) in
+            self.handleEnterOrExit(isOn: isOn)
+        }, onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(self.rx_disposeBag)
+    }
+
+    fileprivate func handleEnterOrExit(isOn: Bool) {
+        let entries = db.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
+        if entries.count == 0 {
+            if isOn {
+                try! db.write {
+                    db.add(Entry())
                 }
             }
-            print(entries)
-        }, onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(self.rx_disposeBag)
+        } else if isOn {
+            if let _ = entries[0].exit {
+                try! db.write {
+                    db.add(Entry())
+                }
+            } else {
+                try! db.write {
+                    entries[0].enter = NSDate()
+                }
+            }
+        } else {
+            try! db.write {
+                entries[0].exit = NSDate()
+            }
+        }
     }
     
 }
