@@ -16,4 +16,10 @@ class Entry: Object {
     override static func indexedProperties() -> [String] {
         return ["entered"]
     }
+    
+    convenience init(enter: NSDate) {
+        self.init()
+        self.enter = enter
+    }
+
 }

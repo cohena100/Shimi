@@ -17,7 +17,6 @@
 		E74BAC641ED0102300723CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC631ED0102300723CA5 /* AppDelegate.swift */; };
 		E74BAC6B1ED0102300723CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74BAC6A1ED0102300723CA5 /* Assets.xcassets */; };
 		E74BAC6E1ED0102300723CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74BAC6C1ED0102300723CA5 /* LaunchScreen.storyboard */; };
-		E74BAC791ED0102300723CA5 /* ShimiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC781ED0102300723CA5 /* ShimiTests.swift */; };
 		E74BAC841ED0102300723CA5 /* ShimiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC831ED0102300723CA5 /* ShimiUITests.swift */; };
 		E74BACA01ED0118400723CA5 /* CAAnimationGroup+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC9E1ED0118400723CA5 /* CAAnimationGroup+Rx.swift */; };
 		E74BACA11ED0118400723CA5 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BAC9F1ED0118400723CA5 /* UIView+Anchors.swift */; };
@@ -27,6 +26,7 @@
 		E74BACAC1ED011D500723CA5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E74BACAB1ED011D500723CA5 /* .gitignore */; };
 		E75DAD371EDAB79F00C0A4C4 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */; };
 		E75DAD391EDAB7F600C0A4C4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DAD381EDAB7F600C0A4C4 /* Realm.framework */; };
+		E7607AB91EDBF4B800345D93 /* RotatingButtonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */; };
 		E7AF6BA41ED9819B00EC7C2C /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */; };
 		E7AF6BA71ED9828100EC7C2C /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF6BA61ED9828100EC7C2C /* Entry.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +62,6 @@
 		E74BAC6D1ED0102300723CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E74BAC6F1ED0102300723CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E74BAC741ED0102300723CA5 /* ShimiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShimiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E74BAC781ED0102300723CA5 /* ShimiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimiTests.swift; sourceTree = "<group>"; };
 		E74BAC7A1ED0102300723CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E74BAC7F1ED0102300723CA5 /* ShimiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShimiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74BAC831ED0102300723CA5 /* ShimiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimiUITests.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		E74BACAB1ED011D500723CA5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E75DAD381EDAB7F600C0A4C4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsTests.swift; sourceTree = "<group>"; };
 		E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
 		E7AF6BA61ED9828100EC7C2C /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,8 +176,8 @@
 		E74BAC771ED0102300723CA5 /* ShimiTests */ = {
 			isa = PBXGroup;
 			children = (
-				E74BAC781ED0102300723CA5 /* ShimiTests.swift */,
 				E74BAC7A1ED0102300723CA5 /* Info.plist */,
+				E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */,
 			);
 			path = ShimiTests;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E74BAC791ED0102300723CA5 /* ShimiTests.swift in Sources */,
+				E7607AB91EDBF4B800345D93 /* RotatingButtonsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

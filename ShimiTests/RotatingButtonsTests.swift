@@ -1,8 +1,8 @@
 //
-//  ShimiTests.swift
-//  ShimiTests
+//  RotatingButtonsTests.swift
+//  Shimi
 //
-//  Created by Pango-mac on 20/05/2017.
+//  Created by Pango-mac on 29/05/2017.
 //  Copyright © 2017 TsiliGiliMiliTili. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import RxSwift
 
 @testable import Shimi
 
-class ShimiTests: XCTestCase {
+class RotatingButtonsTests: XCTestCase {
     
     var db: Realm!
     
@@ -26,7 +26,7 @@ class ShimiTests: XCTestCase {
         super.tearDown()
     }
     
-    func test1() {
+    func test_isOn_true_1Entry() {
         let vm = RotatingButtonsViewModel(db: self.db, vc: nil)
         vm.isOn.value = true
         let entries = db.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
@@ -35,7 +35,7 @@ class ShimiTests: XCTestCase {
         XCTAssertNil(firstEntry.exit)
     }
     
-    func test2() {
+    func test_isOn_trueAndFalse_1CompleteEntry() {
         let vm = RotatingButtonsViewModel(db: self.db, vc: nil)
         vm.isOn.value = true
         vm.isOn.value = false
@@ -44,6 +44,5 @@ class ShimiTests: XCTestCase {
         let firstEntry = entries[0]
         XCTAssertNotNil(firstEntry.exit)
     }
-    
     
 }

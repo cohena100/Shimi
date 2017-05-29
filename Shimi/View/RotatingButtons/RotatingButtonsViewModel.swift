@@ -39,13 +39,13 @@ class RotatingButtonsViewModel: NSObject {
         if entries.count == 0 {
             if isOn {
                 try! db.write {
-                    db.add(Entry())
+                    db.add(Entry(enter: NSDate()))
                 }
             }
         } else if isOn {
             if let _ = entries[0].exit {
                 try! db.write {
-                    db.add(Entry())
+                    db.add(Entry(enter: NSDate()))
                 }
             } else {
                 try! db.write {
@@ -57,6 +57,7 @@ class RotatingButtonsViewModel: NSObject {
                 entries[0].exit = NSDate()
             }
         }
+        print(entries)
     }
     
 }
