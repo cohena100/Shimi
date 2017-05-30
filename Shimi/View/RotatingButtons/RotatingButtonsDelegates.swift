@@ -9,8 +9,13 @@
 import Foundation
 import RxSwift
 
+enum RotatingButtonsState {
+    case left
+    case right
+}
+
 protocol RotatingButtonsViewModelDelegate: class {
-    var state: RotatingButtonsViewModel.State { get set }
+    var state: RotatingButtonsState { get set }
 }
 
 protocol RotatingButtonsViewControllerDelegate: class {

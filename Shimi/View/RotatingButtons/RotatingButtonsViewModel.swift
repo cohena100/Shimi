@@ -14,11 +14,6 @@ import RealmSwift
 
 class RotatingButtonsViewModel: NSObject {
     
-    enum State {
-        case left
-        case right
-    }
-
     let isOn = Variable(true)
     let db: Realm
     
