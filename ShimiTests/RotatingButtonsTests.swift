@@ -56,8 +56,14 @@ class RotatingButtonsTests: XCTestCase {
         XCTAssertNotNil(firstEntry.exit)
     }
     
+    func test_isOn_someTrueAndFalse_3CompleteEntry() {
+        createEntries(vm: vm, count: 3)
+        let entries = fetchEntries()
+        XCTAssert(entries.count == 3)
+    }
+    
     fileprivate func createEntries(vm: RotatingButtonsViewModel, count: Int) {
-        [0 ..< count].forEach { (index) in
+        for _ in 0 ..< count {
             vm.isOn.value = true
             vm.isOn.value = false
         }
