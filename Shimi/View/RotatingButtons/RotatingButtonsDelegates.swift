@@ -15,9 +15,9 @@ enum RotatingButtonsState {
 }
 
 protocol RotatingButtonsViewModelDelegate: class {
+    var state: RotatingButtonsState { get set }
 }
 
 protocol RotatingButtonsViewControllerDelegate: class {
-    var state: RotatingButtonsState { get set }
     var isOn: Variable<Bool> { get }
 }

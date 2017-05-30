@@ -14,14 +14,15 @@ import RealmSwift
 
 class RotatingButtonsViewModel: NSObject {
     
-    var state: RotatingButtonsState = .left
+    var startingState: RotatingButtonsState = .left
     let isOn = Variable(true)
     let db: Realm
     
     init(db: Realm, vc: RotatingButtonsViewModelDelegate?) {
         self.db = db
         let entries = db.objects(Entry.self).sorted(byKeyPath: #keyPath(Entry.enter), ascending: false)
-        self.state = (entries.count > 0 && entries[0].exit == nil) ? .right : .left
+        self.startingState = (entries.count > 0 && entries[0].exit == nil) ? .right : .left
+        vc?.state = self.startingState
         super.init()
         self.isOn.asObservable().skip(1).subscribe(onNext: { (isOn) in
             self.handleEnterOrExit(isOn: isOn)

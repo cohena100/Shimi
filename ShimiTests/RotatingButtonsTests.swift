@@ -63,11 +63,11 @@ class RotatingButtonsTests: XCTestCase {
     }
     
     func test_State_SomeEntriesAndNoExit_StateEqualsRight() {
-        XCTAssertTrue(vm.state == .left)
+        XCTAssertTrue(vm.startingState == .left)
         createEntries(vm: vm, count: 3)
         vm.isOn.value = true
         vm = RotatingButtonsViewModel(db: self.db, vc: nil)
-        XCTAssertTrue(vm.state == .right)
+        XCTAssertTrue(vm.startingState == .right)
     }
     
     fileprivate func createEntries(vm: RotatingButtonsViewModel, count: Int) {
