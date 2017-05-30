@@ -12,15 +12,10 @@ class ShimiUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        let app = XCUIApplication()
+        app.launchArguments.append("-test")
+        app.launch()
     }
     
     override func tearDown() {
@@ -28,9 +23,17 @@ class ShimiUITests: XCTestCase {
         super.tearDown()
     }
     
+    
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let app = XCUIApplication()
+        createEntries(app: app, count: 4)
+    }
+    
+    fileprivate func createEntries(app: XCUIApplication, count: Int) {
+        for _ in 0 ..< count {
+            app.buttons["Enter"].tap()
+            app.buttons["Exit"].tap()
+        }
     }
     
 }

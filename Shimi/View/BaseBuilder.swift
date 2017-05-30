@@ -6,7 +6,7 @@
 //  Copyright © 2017 TsiliGiliMiliTili. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RealmSwift
 
 class BaseBuilder: NSObject {
@@ -14,7 +14,12 @@ class BaseBuilder: NSObject {
     let db: Realm
     
     override init() {
-        self.db = try! Realm()
+        let arguments = ProcessInfo.processInfo.arguments
+        if arguments.contains("-test") {
+            self.db = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "ui tests"))
+        } else {
+            self.db = try! Realm()
+        }
         super.init()
     }
     
