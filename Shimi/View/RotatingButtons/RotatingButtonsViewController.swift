@@ -14,7 +14,6 @@ import Action
 
 class RotatingButtonsViewController: UIViewController {
     var viewModel: RotatingButtonsViewControllerDelegate?
-    var state: RotatingButtonsState = .left
     let fadedAlpha: CGFloat
     let notFadedAlpha: CGFloat
     let animationDuration: TimeInterval
@@ -76,7 +75,7 @@ class RotatingButtonsViewController: UIViewController {
         let anchors = leftButton.anchorWithReturnAnchors(nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         leftButtonLeftAnchor = anchors[0]
         leftButtonRightAnchor = anchors[1]
-        if self.state == .left {
+        if self.viewModel?.state == .left {
             self.leftButton.alpha = self.notFadedAlpha
             leftButtonRightAnchor?.isActive = false
         } else {
@@ -91,7 +90,7 @@ class RotatingButtonsViewController: UIViewController {
         let anchors = rightButton.anchorWithReturnAnchors(nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         rightButtonLeftAnchor = anchors[0]
         rightButtonRightAnchor = anchors[1]
-        if self.state == .left {
+        if self.viewModel?.state == .left {
             self.rightButton.alpha = self.fadedAlpha
             rightButtonLeftAnchor?.isActive = false
         } else {
@@ -112,18 +111,18 @@ class RotatingButtonsViewController: UIViewController {
     
     fileprivate func createTapEvent(forButton button: UIButton, isLeftButton: Bool) -> Observable<Void> {
         return button.rx.tap.filter { self.leftButtonAnimation == nil }.map { _ -> () in
-            let isToRight = self.state == .left
+            let isToRight = self.viewModel?.state == .left
             self.leftButtonAnimation = self.generateCompleteButtonAnimation(aView: self.leftButton, isToRight: isToRight)
             }.flatMap { _ -> Observable<Bool> in
                 DispatchQueue.main.async {
-                    let isToRight = self.state == .left
+                    let isToRight = self.viewModel?.state == .left
                     self.leftButton.layer.add(self.leftButtonAnimation, forKey: "leftButtonAnimation")
                     let rightButtonAnimation = self.generateCompleteButtonAnimation(aView: self.rightButton,isToRight: !isToRight)
                     self.rightButton.layer.add(rightButtonAnimation, forKey: "rightButtonAnimation")
                 }
                 return self.leftButtonAnimation.rx.animationDidStop
             }.map { _ -> () in
-                let isStateLeft = self.state == .left
+                let isStateLeft = self.viewModel?.state == .left
                 self.leftButtonLeftAnchor?.isActive = isStateLeft ? false : true
                 self.leftButtonRightAnchor?.isActive = isStateLeft ? true : false
                 self.rightButtonLeftAnchor?.isActive = isStateLeft ? true : false
@@ -134,7 +133,7 @@ class RotatingButtonsViewController: UIViewController {
                 } else if !isStateLeft && !isLeftButton {
                     self.viewModel?.isOn.value = false
                 }
-                self.state = isStateLeft ? .right : .left
+                self.viewModel?.state = isStateLeft ? .right : .left
                 self.leftButtonAnimation = nil
                 self.leftButton.layoutIfNeeded()
                 self.rightButton.layoutIfNeeded()

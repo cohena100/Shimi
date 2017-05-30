@@ -119,8 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				E71F56491ED82DF60078EFAD /* RotatingButtonsBuilder.swift */,
-				E71F564A1ED82DF60078EFAD /* RotatingButtonsViewController.swift */,
 				E71F564B1ED82DF60078EFAD /* RotatingButtonsViewModel.swift */,
+				E71F564A1ED82DF60078EFAD /* RotatingButtonsViewController.swift */,
 				E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */,
 			);
 			path = RotatingButtons;

@@ -14,12 +14,14 @@ import RealmSwift
 
 class RotatingButtonsViewModel: NSObject {
     
+    var state: RotatingButtonsState = .left
     let isOn = Variable(true)
     let db: Realm
     
     init(db: Realm, vc: RotatingButtonsViewModelDelegate?) {
         self.db = db
-        vc?.state = .left
+        let entries = db.objects(Entry.self).sorted(byKeyPath: #keyPath(Entry.enter), ascending: false)
+        self.state = (entries.count > 0 && entries[0].exit == nil) ? .right : .left
         super.init()
         self.isOn.asObservable().skip(1).subscribe(onNext: { (isOn) in
             self.handleEnterOrExit(isOn: isOn)
@@ -27,7 +29,7 @@ class RotatingButtonsViewModel: NSObject {
     }
 
     fileprivate func handleEnterOrExit(isOn: Bool) {
-        let entries = db.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
+        let entries = fetchEntries()
         if entries.count == 0 {
             if isOn {
                 try! db.write {
@@ -50,6 +52,10 @@ class RotatingButtonsViewModel: NSObject {
             }
         }
         print(entries)
+    }
+    
+    fileprivate func fetchEntries() -> Results<Entry> {
+        return db.objects(Entry.self).sorted(byKeyPath: #keyPath(Entry.enter), ascending: false)
     }
     
 }
