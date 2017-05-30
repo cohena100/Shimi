@@ -14,7 +14,7 @@ import Action
 
 class RotatingButtonsViewController: UIViewController {
     var viewModel: RotatingButtonsViewControllerDelegate?
-    var state: RotatingButtonsViewModel.State = .left
+    var state: RotatingButtonsState = .left
     let fadedAlpha: CGFloat
     let notFadedAlpha: CGFloat
     let animationDuration: TimeInterval
