@@ -33,7 +33,7 @@ class RotatingButtonsTests: XCTestCase {
     
     func test_isOn_true_1Entry() {
         vm.isOn.value = true
-        let entries = db.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
+        let entries = fetchEntries()
         XCTAssert(entries.count == 1)
         let firstEntry = entries[0]
         XCTAssertNil(firstEntry.exit)
@@ -41,7 +41,7 @@ class RotatingButtonsTests: XCTestCase {
     
     func test_isOn_trueAndFalse_1CompleteEntry() {
         createEntries(vm: vm, count: 1)
-        let entries = db.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
+        let entries = fetchEntries()
         XCTAssert(entries.count == 1)
         let firstEntry = entries[0]
         XCTAssertNotNil(firstEntry.exit)
@@ -50,7 +50,7 @@ class RotatingButtonsTests: XCTestCase {
     func test_isOn_trueAndtrueAndFalse_1CompleteEntry() {
         vm.isOn.value = true
         createEntries(vm: vm, count: 1)
-        let entries = db.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
+        let entries = fetchEntries()
         XCTAssert(entries.count == 1)
         let firstEntry = entries[0]
         XCTAssertNotNil(firstEntry.exit)
@@ -63,4 +63,8 @@ class RotatingButtonsTests: XCTestCase {
         }
     }
     
+    fileprivate func fetchEntries() -> Results<Entry> {
+        return db.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
+    }
+
 }
