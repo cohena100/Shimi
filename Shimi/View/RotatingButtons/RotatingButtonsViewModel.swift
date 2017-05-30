@@ -12,11 +12,8 @@ import NSObject_Rx
 import RxRealm
 import RealmSwift
 
-protocol RotatingButtonsViewModelDelegate: class {
-    var state: RotatingButtonsViewModel.State { get set }
-}
-
 class RotatingButtonsViewModel: NSObject {
+    
     enum State {
         case left
         case right
@@ -61,3 +58,6 @@ class RotatingButtonsViewModel: NSObject {
     }
     
 }
+
+extension RotatingButtonsViewModel: RotatingButtonsViewControllerDelegate {}
+

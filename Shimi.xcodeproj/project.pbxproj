@@ -29,6 +29,7 @@
 		E7607AB91EDBF4B800345D93 /* RotatingButtonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */; };
 		E7AF6BA41ED9819B00EC7C2C /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */; };
 		E7AF6BA71ED9828100EC7C2C /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF6BA61ED9828100EC7C2C /* Entry.swift */; };
+		E7F6EF441EDD531B00024552 /* RotatingButtonsDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsTests.swift; sourceTree = "<group>"; };
 		E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
 		E7AF6BA61ED9828100EC7C2C /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsDelegates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				E71F56491ED82DF60078EFAD /* RotatingButtonsBuilder.swift */,
 				E71F564A1ED82DF60078EFAD /* RotatingButtonsViewController.swift */,
 				E71F564B1ED82DF60078EFAD /* RotatingButtonsViewModel.swift */,
+				E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */,
 			);
 			path = RotatingButtons;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				E74BAC641ED0102300723CA5 /* AppDelegate.swift in Sources */,
 				E74BACA51ED0119400723CA5 /* MainViewController.swift in Sources */,
 				E71F564E1ED82DF60078EFAD /* RotatingButtonsViewModel.swift in Sources */,
+				E7F6EF441EDD531B00024552 /* RotatingButtonsDelegates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

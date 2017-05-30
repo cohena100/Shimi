@@ -13,7 +13,7 @@ import NSObject_Rx
 import Action
 
 class RotatingButtonsViewController: UIViewController {
-    var viewModel: RotatingButtonsViewModel!
+    var viewModel: RotatingButtonsViewControllerDelegate?
     var state: RotatingButtonsViewModel.State = .left
     let fadedAlpha: CGFloat
     let notFadedAlpha: CGFloat
@@ -130,9 +130,9 @@ class RotatingButtonsViewController: UIViewController {
                 self.rightButtonRightAnchor?.isActive = isStateLeft ? false : true
                 self.view.bringSubview(toFront: (isStateLeft ? self.leftButton : self.rightButton))
                 if isStateLeft && isLeftButton {
-                    self.viewModel.isOn.value = true
+                    self.viewModel?.isOn.value = true
                 } else if !isStateLeft && !isLeftButton {
-                    self.viewModel.isOn.value = false
+                    self.viewModel?.isOn.value = false
                 }
                 self.state = isStateLeft ? .right : .left
                 self.leftButtonAnimation = nil
