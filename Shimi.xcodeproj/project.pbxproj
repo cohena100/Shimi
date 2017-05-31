@@ -27,10 +27,14 @@
 		E75DAD371EDAB79F00C0A4C4 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */; };
 		E75DAD391EDAB7F600C0A4C4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DAD381EDAB7F600C0A4C4 /* Realm.framework */; };
 		E7607AB91EDBF4B800345D93 /* RotatingButtonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */; };
+		E7758C121EDE86EB0078BAE0 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C111EDE86EB0078BAE0 /* Entry.swift */; };
+		E7758C1A1EDE871C0078BAE0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C141EDE871C0078BAE0 /* Model.swift */; };
+		E7758C1B1EDE871C0078BAE0 /* Proxies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C151EDE871C0078BAE0 /* Proxies.swift */; };
+		E7758C1C1EDE871C0078BAE0 /* ProxiesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C161EDE871C0078BAE0 /* ProxiesMock.swift */; };
+		E7758C1D1EDE871C0078BAE0 /* ProxiesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C171EDE871C0078BAE0 /* ProxiesProvider.swift */; };
+		E785A8461EDE7DB900580E93 /* EntriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785A8451EDE7DB900580E93 /* EntriesService.swift */; };
 		E7AF6BA41ED9819B00EC7C2C /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */; };
-		E7AF6BA71ED9828100EC7C2C /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF6BA61ED9828100EC7C2C /* Entry.swift */; };
 		E7F6EF441EDD531B00024552 /* RotatingButtonsDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */; };
-		E7F6EF461EDD593900024552 /* BaseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F6EF451EDD593900024552 /* BaseBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,10 +81,14 @@
 		E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E75DAD381EDAB7F600C0A4C4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsTests.swift; sourceTree = "<group>"; };
+		E7758C111EDE86EB0078BAE0 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		E7758C141EDE871C0078BAE0 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		E7758C151EDE871C0078BAE0 /* Proxies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proxies.swift; sourceTree = "<group>"; };
+		E7758C161EDE871C0078BAE0 /* ProxiesMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxiesMock.swift; sourceTree = "<group>"; };
+		E7758C171EDE871C0078BAE0 /* ProxiesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxiesProvider.swift; sourceTree = "<group>"; };
+		E785A8451EDE7DB900580E93 /* EntriesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntriesService.swift; sourceTree = "<group>"; };
 		E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
-		E7AF6BA61ED9828100EC7C2C /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsDelegates.swift; sourceTree = "<group>"; };
-		E7F6EF451EDD593900024552 /* BaseBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,9 +172,10 @@
 		E74BAC621ED0102300723CA5 /* Shimi */ = {
 			isa = PBXGroup;
 			children = (
-				E7AF6BA51ED9826A00EC7C2C /* Model */,
-				E74BAC9D1ED0118400723CA5 /* Extensions */,
 				E74BACA21ED0119400723CA5 /* View */,
+				E785A8441EDE7D9D00580E93 /* Services */,
+				E785A8411EDE7D7000580E93 /* Model */,
+				E74BAC9D1ED0118400723CA5 /* Extensions */,
 				E74BAC631ED0102300723CA5 /* AppDelegate.swift */,
 				E74BAC6A1ED0102300723CA5 /* Assets.xcassets */,
 				E74BAC6C1ED0102300723CA5 /* LaunchScreen.storyboard */,
@@ -208,19 +217,38 @@
 		E74BACA21ED0119400723CA5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E7F6EF451EDD593900024552 /* BaseBuilder.swift */,
 				E71F56481ED82DF60078EFAD /* RotatingButtons */,
 				E74BACA31ED0119400723CA5 /* MainViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		E7AF6BA51ED9826A00EC7C2C /* Model */ = {
+		E7758C131EDE871C0078BAE0 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				E7AF6BA61ED9828100EC7C2C /* Entry.swift */,
+				E7758C141EDE871C0078BAE0 /* Model.swift */,
+				E7758C151EDE871C0078BAE0 /* Proxies.swift */,
+				E7758C161EDE871C0078BAE0 /* ProxiesMock.swift */,
+				E7758C171EDE871C0078BAE0 /* ProxiesProvider.swift */,
 			);
-			name = Model;
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		E785A8411EDE7D7000580E93 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E7758C131EDE871C0078BAE0 /* Logic */,
+				E7758C111EDE86EB0078BAE0 /* Entry.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E785A8441EDE7D9D00580E93 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E785A8451EDE7DB900580E93 /* EntriesService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,16 +414,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7AF6BA71ED9828100EC7C2C /* Entry.swift in Sources */,
+				E7758C121EDE86EB0078BAE0 /* Entry.swift in Sources */,
 				E71F564D1ED82DF60078EFAD /* RotatingButtonsViewController.swift in Sources */,
 				E74BACA11ED0118400723CA5 /* UIView+Anchors.swift in Sources */,
+				E7758C1A1EDE871C0078BAE0 /* Model.swift in Sources */,
+				E785A8461EDE7DB900580E93 /* EntriesService.swift in Sources */,
 				E71F564C1ED82DF60078EFAD /* RotatingButtonsBuilder.swift in Sources */,
+				E7758C1C1EDE871C0078BAE0 /* ProxiesMock.swift in Sources */,
 				E74BACA01ED0118400723CA5 /* CAAnimationGroup+Rx.swift in Sources */,
 				E74BAC641ED0102300723CA5 /* AppDelegate.swift in Sources */,
-				E7F6EF461EDD593900024552 /* BaseBuilder.swift in Sources */,
 				E74BACA51ED0119400723CA5 /* MainViewController.swift in Sources */,
 				E71F564E1ED82DF60078EFAD /* RotatingButtonsViewModel.swift in Sources */,
 				E7F6EF441EDD531B00024552 /* RotatingButtonsDelegates.swift in Sources */,
+				E7758C1D1EDE871C0078BAE0 /* ProxiesProvider.swift in Sources */,
+				E7758C1B1EDE871C0078BAE0 /* Proxies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

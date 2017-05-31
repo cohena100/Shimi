@@ -17,16 +17,20 @@ import RxBlocking
 class RotatingButtonsTests: XCTestCase {
     
     var db: Realm!
+    var entriesService: EntriesService!
     var vm: RotatingButtonsViewModel!
     
     override func setUp() {
         super.setUp()
         self.db = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: self.name))
-        vm = RotatingButtonsViewModel(db: self.db, vc: nil)
+        self.entriesService = EntriesService(db: self.db)
+        vm = RotatingButtonsViewModel(entriesService: self.entriesService, vc: nil)
+        
     }
     
     override func tearDown() {
         self.db = nil
+        self.entriesService = nil
         self.vm = nil
         super.tearDown()
     }
@@ -66,7 +70,7 @@ class RotatingButtonsTests: XCTestCase {
         XCTAssertTrue(vm.startingState == .left)
         createEntries(vm: vm, count: 3)
         vm.isOn.value = true
-        vm = RotatingButtonsViewModel(db: self.db, vc: nil)
+        vm = RotatingButtonsViewModel(entriesService: self.entriesService, vc: nil)
         XCTAssertTrue(vm.startingState == .right)
     }
     
@@ -78,7 +82,7 @@ class RotatingButtonsTests: XCTestCase {
     }
     
     fileprivate func fetchEntries() -> Results<Entry> {
-        return db.objects(Entry.self).sorted(byKeyPath: "enter", ascending: false)
+        return self.db.objects(Entry.self).sorted(byKeyPath: #keyPath(Entry.enter), ascending: false)
     }
 
 }

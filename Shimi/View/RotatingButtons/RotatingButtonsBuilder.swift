@@ -8,13 +8,14 @@
 
 import UIKit
 
-class RotatingButtonsBuilder: BaseBuilder {
+class RotatingButtonsBuilder {
     
     func build() -> RotatingButtonsViewController {
         let enterString = NSLocalizedString("Enter", comment: "enter button title")
         let exitString = NSLocalizedString("Exit", comment: "exit button title")
         let vc = RotatingButtonsViewController(fadedAlpha: 0.2, notFadedAlpha: 1.0, animationDuration: 1.0, enterString: enterString, exitString: exitString)
-        let viewModel = RotatingButtonsViewModel(db: db, vc: vc)
+        let entriesService = Model.sharedInstance.entriesService()
+        let viewModel = RotatingButtonsViewModel(entriesService: entriesService, vc: vc)
         vc.vm = viewModel
         return vc
     }
