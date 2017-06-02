@@ -52,13 +52,14 @@ class EntriesService: NSObject {
                 }
             } else {
                 try! db.write {
-                    entries[0].enter = enterDate
+                    let currentEntry = entries[0]
+                    currentEntry.enter = enterDate
                 }
             }
         case .exit(let exitDate):
             try! db.write {
-                let entry = entries[0]
-                entry.exit = exitDate
+                let currentEntry = entries[0]
+                currentEntry.exit = exitDate
             }
         }
     }
