@@ -13,6 +13,10 @@ class Model {
     
     static let sharedInstance = Model()
     var proxies: ProxiesProvider!
+    lazy var entriesService: EntriesService = {
+        let db = self.dbProxy()
+        return EntriesService(db: db)
+    }()
     
     convenience init() {
         self.init(proxies: Proxies())
@@ -20,11 +24,6 @@ class Model {
     
     init(proxies: ProxiesProvider) {
         self.proxies = proxies
-    }
-    
-    func entriesService() -> EntriesService {
-        let db = self.dbProxy()
-        return EntriesService(db: db)
     }
     
     func dbProxy() -> Realm {
