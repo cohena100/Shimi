@@ -14,12 +14,12 @@ import NSObject_Rx
 class EntriesService: NSObject {
     
     enum EntryAction {
-        case enter(NSDate)
-        case exit(NSDate)
+        case enter(Date)
+        case exit(Date)
     }
     
     let db: Realm
-    let entryAction = Variable(EntriesService.EntryAction.enter(NSDate()))
+    let entryAction = Variable(EntriesService.EntryAction.enter(Date()))
     
     init(db: Realm) {
         self.db = db
@@ -38,31 +38,29 @@ class EntriesService: NSObject {
     
     fileprivate func handleEntry(_ action: EntryAction) {
         let entries = fetchEntries()
-        if entries.count == 0 {
-            if case .enter(let date) = action  {
+        switch action {
+        case .enter(let enterDate):
+            if entries.count == 0 {
                 try! db.write {
-                    db.add(Entry(enter: date))
+                    let newEntry = Entry(enter: enterDate)
+                    db.add(newEntry)
+                }
+            } else if let _ = entries[0].exit {
+                try! db.write {
+                    let newEntry = Entry(enter: enterDate)
+                    db.add(newEntry)
+                }
+            } else {
+                try! db.write {
+                    entries[0].enter = enterDate
                 }
             }
-        } else {
-            switch action {
-            case .enter(let date):
-                if let _ = entries[0].exit {
-                    try! db.write {
-                        db.add(Entry(enter: date))
-                    }
-                } else {
-                    try! db.write {
-                        entries[0].enter = date
-                    }
-                }
-            case .exit(let date):
-                try! db.write {
-                    entries[0].exit = date
-                }
+        case .exit(let exitDate):
+            try! db.write {
+                let entry = entries[0]
+                entry.exit = exitDate
             }
         }
-        print(entries)
     }
     
     fileprivate func fetchEntries() -> Results<Entry> {

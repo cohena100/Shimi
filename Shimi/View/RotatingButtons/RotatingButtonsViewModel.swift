@@ -27,7 +27,7 @@ class RotatingButtonsViewModel: NSObject {
     }
 
     fileprivate func handleEnterOrExit(isOn: Bool) {
-        self.entriesService.entryAction.value = isOn ? EntriesService.EntryAction.enter(NSDate()) : EntriesService.EntryAction.exit(NSDate())
+        self.entriesService.entryAction.value = isOn ? EntriesService.EntryAction.enter(Date()) : EntriesService.EntryAction.exit(Date())
     }
     
 }

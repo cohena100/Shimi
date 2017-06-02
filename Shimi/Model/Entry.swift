@@ -10,14 +10,14 @@ import Foundation
 import RealmSwift
 
 class Entry: Object {
-    dynamic var enter = NSDate()
-    dynamic var exit: NSDate? = nil
+    dynamic var enter = Date()
+    dynamic var exit: Date? = nil
     
     override static func indexedProperties() -> [String] {
         return ["entered"]
     }
     
-    convenience init(enter: NSDate) {
+    convenience init(enter: Date) {
         self.init()
         self.enter = enter
     }

@@ -27,17 +27,26 @@ class MainViewController: UIViewController {
     
     fileprivate func setup() {
         setupRotatingButtonsViewController()
+        setupNumberTunerViewController()
         self.navigationItem.title = mainTitleString
     }
     
     fileprivate func setupRotatingButtonsViewController() {
-        let contentVC = RotatingButtonsBuilder().build()
-        addChildViewController(contentVC)
-        contentVC.view.frame = .zero
-        view.addSubview(contentVC.view)
-        contentVC.view.anchorCenterSuperview()
-        contentVC.view.anchor(nil, left: nil, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 200, heightConstant: 100)
-        contentVC.didMove(toParentViewController: self)
+        let vc = RotatingButtonsBuilder().build()
+        addChildViewController(vc)
+        vc.view.frame = .zero
+        view.addSubview(vc.view)
+        vc.view.anchorCenterSuperview()
+        vc.view.anchor(nil, left: nil, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 200, heightConstant: 100)
+        vc.didMove(toParentViewController: self)
     }
     
+    fileprivate func setupNumberTunerViewController() {
+        let vc = NumberTunerBuilder().build()
+        self.addChildViewController(vc)
+        self.view.addSubview(vc.view)
+        vc.view.anchorCenterXToSuperview(constant: 0)
+        vc.view.anchor(nil, left: nil, bottom: self.view.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 64, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        vc.didMove(toParentViewController: self)
+    }
 }

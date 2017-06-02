@@ -15,8 +15,8 @@ class RotatingButtonsBuilder {
         let exitString = NSLocalizedString("Exit", comment: "exit button title")
         let vc = RotatingButtonsViewController(fadedAlpha: 0.2, notFadedAlpha: 1.0, animationDuration: 1.0, enterString: enterString, exitString: exitString)
         let entriesService = Model.sharedInstance.entriesService()
-        let viewModel = RotatingButtonsViewModel(entriesService: entriesService, vc: vc)
-        vc.vm = viewModel
+        let vm = RotatingButtonsViewModel(entriesService: entriesService, vc: vc)
+        vc.vm = vm
         return vc
     }
     

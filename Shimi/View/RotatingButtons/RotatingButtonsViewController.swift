@@ -13,6 +13,7 @@ import NSObject_Rx
 import Action
 
 class RotatingButtonsViewController: UIViewController {
+    
     var vm: RotatingButtonsViewControllerDelegate?
     var state: RotatingButtonsState = .left
     let fadedAlpha: CGFloat
