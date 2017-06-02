@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RealmSwift
 import NSObject_Rx
+import RxRealm
 
 class EntriesService: NSObject {
     
@@ -20,6 +21,7 @@ class EntriesService: NSObject {
     
     let db: Realm
     let entryAction = Variable(EntriesService.EntryAction.enter(Date()))
+    let total = Variable(0)
     
     init(db: Realm) {
         self.db = db
@@ -27,7 +29,20 @@ class EntriesService: NSObject {
         self.entryAction.asObservable().skip(1).subscribe(onNext: { (action) in
             self.handleEntry(action)
         }, onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(self.rx_disposeBag)
-        
+        let entries = self.db.objects(Entry.self)
+        Observable.array(from: entries)
+            .map { entries in
+                let sum = entries.reduce(0.0, { (soFar, nextEntry) -> TimeInterval in
+                    if let exitDate = nextEntry.exit {
+                        return soFar + exitDate.timeIntervalSince(nextEntry.enter)
+                    } else {
+                        return soFar
+                    }
+                })
+                return Int(sum)
+            }.subscribe(onNext: { sum  in
+                self.total.value = sum
+            }).addDisposableTo(rx_disposeBag)
     }
     
     func isEnterState() -> Bool {

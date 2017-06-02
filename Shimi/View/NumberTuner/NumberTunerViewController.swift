@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class NumberTunerViewController: UIViewController {
     
@@ -20,6 +22,7 @@ class NumberTunerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vm?.total.asObservable().map { String($0) }.asDriver(onErrorJustReturn: "").drive(self.numberLabel.rx.text).addDisposableTo(rx_disposeBag)
         setup()
     }
     

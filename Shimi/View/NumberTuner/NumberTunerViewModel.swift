@@ -7,9 +7,22 @@
 //
 
 import Foundation
+import RxSwift
 
 class NumberTunerViewModel: NSObject {
    
+    let entriesService: EntriesService
+    
+    var total: Variable<Int> {
+        get {
+            return self.entriesService.total
+        }
+    }
+    
+    init(entriesService: EntriesService) {
+        self.entriesService = entriesService
+        super.init()
+    }
 }
 
 extension NumberTunerViewModel: NumberTunerViewControllerDelegate {}

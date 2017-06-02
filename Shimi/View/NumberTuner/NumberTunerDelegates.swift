@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol NumberTunerViewModelDelegate: class {
     
 }
 
 protocol NumberTunerViewControllerDelegate: class {
-    
+    var total: Variable<Int> { get }
 }

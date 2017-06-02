@@ -12,7 +12,8 @@ class NumberTunerBuilder {
     
     func build() -> NumberTunerViewController {
         let vc = NumberTunerViewController()
-        let vm = NumberTunerViewModel()
+        let entriesService = Model.sharedInstance.entriesService
+        let vm = NumberTunerViewModel(entriesService: entriesService)
         vc.vm = vm
         return vc
     }
