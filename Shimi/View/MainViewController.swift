@@ -34,7 +34,6 @@ class MainViewController: UIViewController {
     fileprivate func setupRotatingButtonsViewController() {
         let vc = RotatingButtonsBuilder().build()
         addChildViewController(vc)
-        vc.view.frame = .zero
         view.addSubview(vc.view)
         vc.view.anchorCenterSuperview()
         vc.view.anchor(nil, left: nil, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 200, heightConstant: 100)
