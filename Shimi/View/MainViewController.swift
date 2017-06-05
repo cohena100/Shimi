@@ -19,22 +19,22 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        self.view.backgroundColor = .white
         setup()
     }
     
     // MARK: - Setups
     
     fileprivate func setup() {
-        setupRotatingButtonsViewController()
-        setupNumberTunerViewController()
+        self.setupRotatingButtonsViewController()
+        self.setupNumberTunerViewController()
         self.navigationItem.title = mainTitleString
     }
     
     fileprivate func setupRotatingButtonsViewController() {
         let vc = RotatingButtonsBuilder().build()
-        addChildViewController(vc)
-        view.addSubview(vc.view)
+        self.addChildViewController(vc)
+        self.view.addSubview(vc.view)
         vc.view.anchorCenterSuperview()
         vc.view.anchor(nil, left: nil, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 200, heightConstant: 100)
         vc.didMove(toParentViewController: self)
