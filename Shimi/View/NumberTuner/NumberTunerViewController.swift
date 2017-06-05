@@ -15,7 +15,6 @@ class NumberTunerViewController: UIViewController {
     var vm: NumberTunerViewControllerDelegate?
     lazy var numberLabel: UILabel = {
         let label = UILabel()
-        label.text = "10"
         label.font = UIFont.boldSystemFont(ofSize: 32)
         return label
     }()
