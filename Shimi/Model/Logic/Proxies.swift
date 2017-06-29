@@ -11,7 +11,7 @@ import RealmSwift
 
 class Proxies: ProxiesProvider {
     
-    var db: Realm = {
+    lazy var db: Realm = {
         let defaultURL = Realm.Configuration.defaultConfiguration.fileURL!
         let realmExists = try? defaultURL.checkResourceIsReachable()
         if realmExists == true {
