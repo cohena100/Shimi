@@ -38,6 +38,8 @@
 		E7758C1D1EDE871C0078BAE0 /* ProxiesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C171EDE871C0078BAE0 /* ProxiesProvider.swift */; };
 		E785A8461EDE7DB900580E93 /* EntriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785A8451EDE7DB900580E93 /* EntriesService.swift */; };
 		E7AF6BA41ED9819B00EC7C2C /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */; };
+		E7DE96031F04F33B00711E99 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DE96021F04F33B00711E99 /* Settings.swift */; };
+		E7DE96051F051A5300711E99 /* default-compact.realm in Resources */ = {isa = PBXBuildFile; fileRef = E7DE96041F051A5300711E99 /* default-compact.realm */; };
 		E7F6EF441EDD531B00024552 /* RotatingButtonsDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +98,8 @@
 		E7758C171EDE871C0078BAE0 /* ProxiesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxiesProvider.swift; sourceTree = "<group>"; };
 		E785A8451EDE7DB900580E93 /* EntriesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntriesService.swift; sourceTree = "<group>"; };
 		E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
+		E7DE96021F04F33B00711E99 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E7DE96041F051A5300711E99 /* default-compact.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-compact.realm"; sourceTree = "<group>"; };
 		E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsDelegates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +195,7 @@
 				E74BACAB1ED011D500723CA5 /* .gitignore */,
 				E74BACA71ED011BB00723CA5 /* Cartfile */,
 				E74BACA81ED011BB00723CA5 /* resources.xcconfig */,
+				E7DE96041F051A5300711E99 /* default-compact.realm */,
 			);
 			path = Shimi;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 			children = (
 				E7758C131EDE871C0078BAE0 /* Logic */,
 				E7758C111EDE86EB0078BAE0 /* Entry.swift */,
+				E7DE96021F04F33B00711E99 /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E74BAC6E1ED0102300723CA5 /* LaunchScreen.storyboard in Resources */,
+				E7DE96051F051A5300711E99 /* default-compact.realm in Resources */,
 				E74BAC6B1ED0102300723CA5 /* Assets.xcassets in Resources */,
 				E74BACA91ED011BB00723CA5 /* Cartfile in Resources */,
 				E74BACAC1ED011D500723CA5 /* .gitignore in Resources */,
@@ -452,6 +459,7 @@
 				E7758C1D1EDE871C0078BAE0 /* ProxiesProvider.swift in Sources */,
 				E755FDC31EE130B500829B0A /* NumberTunerViewModel.swift in Sources */,
 				E7758C1B1EDE871C0078BAE0 /* Proxies.swift in Sources */,
+				E7DE96031F04F33B00711E99 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
