@@ -11,7 +11,7 @@ import RealmSwift
 
 class Proxies: ProxiesProvider {
     
-    func db() -> Realm {
+    var db: Realm = {
         let defaultURL = Realm.Configuration.defaultConfiguration.fileURL!
         let realmExists = try? defaultURL.checkResourceIsReachable()
         if realmExists == true {
@@ -21,5 +21,6 @@ class Proxies: ProxiesProvider {
             try! FileManager.default.copyItem(at: bundleRealmURL, to: defaultURL)
         }
         return try! Realm()
-    }
+    }()
+    
 }

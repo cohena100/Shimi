@@ -27,7 +27,7 @@ class Model {
     }
     
     func dbProxy() -> Realm {
-        return proxies.db()
+        return proxies.db
     }
     
 }

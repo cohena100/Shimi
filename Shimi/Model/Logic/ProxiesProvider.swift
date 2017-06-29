@@ -11,6 +11,6 @@ import RealmSwift
 
 protocol ProxiesProvider: class {
     
-    func db() -> Realm
+    var db: Realm { get }
     
 }

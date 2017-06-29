@@ -12,12 +12,11 @@ import RealmSwift
 class ProxiesMock: ProxiesProvider {
     
     static var localDB: Realm!
-    
-    func db() -> Realm {
+    var db: Realm = {
         if ProxiesMock.localDB == nil {
             ProxiesMock.localDB = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "ui tests"))
         }
         return ProxiesMock.localDB
-    }
+    }()
 
 }
