@@ -10,9 +10,9 @@ import Foundation
 import RealmSwift
 
 class Settings: Object {
-    dynamic var workHoursADay = 9
+    dynamic var workHoursADay: TimeInterval = 9 * 60 * 60
     
-    convenience init(workHoursADay: Int) {
+    convenience init(workHoursADay: TimeInterval) {
         self.init()
         self.workHoursADay = workHoursADay
     }
