@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        setupLogging()
         setupModel()
         setupWindow()
         return true
@@ -40,6 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    fileprivate func setupLogging() {
+        let console = ConsoleDestination()
+        let platform = SBPlatformDestination(appID: "AOBXnj", appSecret: "fnpcpq6qajfql1dUtjwgeyKxbP3bWesj", encryptionKey: "pirkf0fu7tiO5xdnlezstzotifh179s5")
+        #if DEBUG
+        #else
+            platform.minLevel = .info
+        #endif
+        SwiftyBeaver.addDestination(console)
+        SwiftyBeaver.addDestination(platform)
     }
     
     fileprivate func setupModel() {

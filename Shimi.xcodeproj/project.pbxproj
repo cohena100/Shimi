@@ -31,13 +31,17 @@
 		E75DAD371EDAB79F00C0A4C4 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */; };
 		E75DAD391EDAB7F600C0A4C4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DAD381EDAB7F600C0A4C4 /* Realm.framework */; };
 		E7607AB91EDBF4B800345D93 /* RotatingButtonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */; };
+		E7612BB01F0CC49500664139 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7612BAF1F0CC49500664139 /* SwiftyBeaver.framework */; };
 		E7758C121EDE86EB0078BAE0 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C111EDE86EB0078BAE0 /* Entry.swift */; };
 		E7758C1A1EDE871C0078BAE0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C141EDE871C0078BAE0 /* Model.swift */; };
 		E7758C1B1EDE871C0078BAE0 /* Proxies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C151EDE871C0078BAE0 /* Proxies.swift */; };
 		E7758C1C1EDE871C0078BAE0 /* ProxiesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C161EDE871C0078BAE0 /* ProxiesMock.swift */; };
 		E7758C1D1EDE871C0078BAE0 /* ProxiesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7758C171EDE871C0078BAE0 /* ProxiesProvider.swift */; };
 		E785A8461EDE7DB900580E93 /* EntriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785A8451EDE7DB900580E93 /* EntriesService.swift */; };
+		E7899FC51F0A298F00C48D3B /* EntriesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7899FC41F0A298F00C48D3B /* EntriesServiceTests.swift */; };
 		E7AF6BA41ED9819B00EC7C2C /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */; };
+		E7C23D971F0CE40800A1D3D0 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C23D931F0CE05900A1D3D0 /* RxBlocking.framework */; };
+		E7C23D991F0CF47000A1D3D0 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C23D981F0CF47000A1D3D0 /* RxSwiftExt.framework */; };
 		E7DE96031F04F33B00711E99 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DE96021F04F33B00711E99 /* Settings.swift */; };
 		E7DE96051F051A5300711E99 /* default-compact.realm in Resources */ = {isa = PBXBuildFile; fileRef = E7DE96041F051A5300711E99 /* default-compact.realm */; };
 		E7F6EF441EDD531B00024552 /* RotatingButtonsDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */; };
@@ -91,13 +95,18 @@
 		E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E75DAD381EDAB7F600C0A4C4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsTests.swift; sourceTree = "<group>"; };
+		E7612BAF1F0CC49500664139 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		E7758C111EDE86EB0078BAE0 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		E7758C141EDE871C0078BAE0 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E7758C151EDE871C0078BAE0 /* Proxies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proxies.swift; sourceTree = "<group>"; };
 		E7758C161EDE871C0078BAE0 /* ProxiesMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxiesMock.swift; sourceTree = "<group>"; };
 		E7758C171EDE871C0078BAE0 /* ProxiesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxiesProvider.swift; sourceTree = "<group>"; };
 		E785A8451EDE7DB900580E93 /* EntriesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntriesService.swift; sourceTree = "<group>"; };
+		E7899FC41F0A298F00C48D3B /* EntriesServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntriesServiceTests.swift; sourceTree = "<group>"; };
 		E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
+		E7C23D931F0CE05900A1D3D0 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		E7C23D951F0CE07800A1D3D0 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		E7C23D981F0CF47000A1D3D0 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		E7DE96021F04F33B00711E99 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E7DE96041F051A5300711E99 /* default-compact.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-compact.realm"; sourceTree = "<group>"; };
 		E7F6EF431EDD531B00024552 /* RotatingButtonsDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingButtonsDelegates.swift; sourceTree = "<group>"; };
@@ -115,6 +124,9 @@
 				E75DAD391EDAB7F600C0A4C4 /* Realm.framework in Frameworks */,
 				E75DAD371EDAB79F00C0A4C4 /* RealmSwift.framework in Frameworks */,
 				E7AF6BA41ED9819B00EC7C2C /* RxRealm.framework in Frameworks */,
+				E7612BB01F0CC49500664139 /* SwiftyBeaver.framework in Frameworks */,
+				E7C23D971F0CE40800A1D3D0 /* RxBlocking.framework in Frameworks */,
+				E7C23D991F0CF47000A1D3D0 /* RxSwiftExt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +161,10 @@
 		E73ADF2A1ED014470009D4F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E7C23D981F0CF47000A1D3D0 /* RxSwiftExt.framework */,
+				E7C23D951F0CE07800A1D3D0 /* RxTest.framework */,
+				E7C23D931F0CE05900A1D3D0 /* RxBlocking.framework */,
+				E7612BAF1F0CC49500664139 /* SwiftyBeaver.framework */,
 				E75DAD381EDAB7F600C0A4C4 /* Realm.framework */,
 				E75DAD361EDAB79F00C0A4C4 /* RealmSwift.framework */,
 				E7AF6BA31ED9819B00EC7C2C /* RxRealm.framework */,
@@ -205,6 +221,7 @@
 			children = (
 				E74BAC7A1ED0102300723CA5 /* Info.plist */,
 				E7607AB81EDBF4B800345D93 /* RotatingButtonsTests.swift */,
+				E7899FC41F0A298F00C48D3B /* EntriesServiceTests.swift */,
 			);
 			path = ShimiTests;
 			sourceTree = "<group>";
@@ -427,8 +444,23 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxRealm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwiftExt.framework",
 			);
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Action.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NSObject_Rx.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRealm.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxBlocking.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwiftExt.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -467,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7899FC51F0A298F00C48D3B /* EntriesServiceTests.swift in Sources */,
 				E7607AB91EDBF4B800345D93 /* RotatingButtonsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

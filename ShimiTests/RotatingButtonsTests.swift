@@ -24,8 +24,11 @@ class RotatingButtonsTests: XCTestCase {
         super.setUp()
         self.db = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: self.name))
         self.entriesService = EntriesService(db: self.db)
+        let mySettings = Settings(workHoursADay: 0.0)
+        try! self.db.write {
+            self.db.add(mySettings)
+        }
         vm = RotatingButtonsViewModel(entriesService: self.entriesService, vc: nil)
-        
     }
     
     override func tearDown() {

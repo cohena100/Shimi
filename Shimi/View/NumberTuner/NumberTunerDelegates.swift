@@ -14,5 +14,5 @@ protocol NumberTunerViewModelDelegate: class {
 }
 
 protocol NumberTunerViewControllerDelegate: class {
-    var total: Variable<Int> { get }
+    var total: Observable<Int> { get }
 }

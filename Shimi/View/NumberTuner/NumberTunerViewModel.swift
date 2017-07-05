@@ -13,11 +13,9 @@ class NumberTunerViewModel: NSObject {
    
     let entriesService: EntriesService
     
-    var total: Variable<Int> {
-        get {
-            return self.entriesService.total
-        }
-    }
+    lazy var total: Observable<Int> = {
+            return self.entriesService.total.asObservable().map { Int($0) }
+    }()
     
     init(entriesService: EntriesService) {
         self.entriesService = entriesService

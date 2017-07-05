@@ -11,6 +11,7 @@ import RxSwift
 import RealmSwift
 import NSObject_Rx
 import RxRealm
+import SwiftyBeaver
 
 class EntriesService: NSObject {
     
@@ -21,7 +22,7 @@ class EntriesService: NSObject {
     
     let db: Realm
     let entryAction = Variable(EntriesService.EntryAction.enter(Date()))
-    let total = Variable(0)
+    let total = Variable<TimeInterval>(0)
     
     init(db: Realm) {
         self.db = db
@@ -31,17 +32,20 @@ class EntriesService: NSObject {
         }, onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(self.rx_disposeBag)
         let entries = self.db.objects(Entry.self)
         Observable.array(from: entries)
-            .map { entries in
-                let sum = entries.reduce(0.0, { (soFar, nextEntry) -> TimeInterval in
-                    if let exitDate = nextEntry.exit {
-                        return soFar + exitDate.timeIntervalSince(nextEntry.enter)
-                    } else {
-                        return soFar
-                    }
-                })
-                return Int(sum)
+            .map { (entries) -> TimeInterval in
+                return self.partitionByDay(entries: entries).flatMap {
+                    let sum = $0.reduce(0.0, { (soFar, nextEntry) -> TimeInterval in
+                        if let exitDate = nextEntry.exit {
+                            return soFar + exitDate.timeIntervalSince(nextEntry.enter)
+                        } else {
+                            return soFar
+                        }
+                    })
+                    return sum - db.objects(Settings.self)[0].workHoursADay
+                    }.reduce(0,+)
             }.subscribe(onNext: { sum  in
                 self.total.value = sum
+                print(self.total.value)
             }).addDisposableTo(rx_disposeBag)
     }
     
@@ -75,6 +79,7 @@ class EntriesService: NSObject {
             try! db.write {
                 let currentEntry = entries[0]
                 currentEntry.exit = exitDate
+                SwiftyBeaver.debug("enter: \(currentEntry.enter), exit: \(String(describing: currentEntry.exit))")
             }
         }
     }
@@ -83,4 +88,30 @@ class EntriesService: NSObject {
         return db.objects(Entry.self).sorted(byKeyPath: #keyPath(Entry.enter), ascending: false)
     }
     
+    fileprivate func partitionByDay(entries: [Entry]) -> [[Entry]] {
+        if entries.count == 0 {
+            return []
+        }
+        if entries.count == 1 {
+            return [[entries[0]]]
+        }
+        var result: [[Entry]] = []
+        var currentDayEntries: [Entry] = []
+        for entry in entries {
+            if currentDayEntries.count == 0 {
+                currentDayEntries.append(entry)
+            } else {
+                if Calendar.current.isDate(currentDayEntries[0].enter, inSameDayAs: entry.enter) {
+                    currentDayEntries.append(entry)
+                } else {
+                    result.append(currentDayEntries)
+                    currentDayEntries = [entry]
+                }
+            }
+        }
+        if currentDayEntries.count > 0 {
+            result.append(currentDayEntries)
+        }
+        return result
+    }
 }

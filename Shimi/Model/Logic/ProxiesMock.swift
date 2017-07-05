@@ -12,7 +12,12 @@ import RealmSwift
 class ProxiesMock: ProxiesProvider {
     
     lazy var db: Realm = {
-        return try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "ui tests"))
+        let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "ui tests"))
+        let mySettings = Settings(workHoursADay: 1.0)
+        try! realm.write {
+            realm.add(mySettings)
+        }
+        return realm
     }()
 
 }
