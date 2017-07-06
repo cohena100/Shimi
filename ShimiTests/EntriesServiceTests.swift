@@ -42,11 +42,11 @@ class EntriesServiceTests: XCTestCase {
     
     func test_WorkHours_1SecondWorkHours_AccountedFor_naive() {
         let disposeBag = DisposeBag()
-        let exp = expectation(description: "sfds")
+        let exp = expectation(description: "")
+        exp.isInverted = true
         var result: TimeInterval!
-        self.entriesService.total.asObservable().skip(2).subscribe(onNext: { (total) in
+        self.entriesService.total.asObservable().subscribe(onNext: { (total) in
             result = total
-            exp.fulfill()
         }).disposed(by: disposeBag)
         let enterDate = Date()
         let exitDate = enterDate.addingTimeInterval(4.0)
@@ -61,30 +61,74 @@ class EntriesServiceTests: XCTestCase {
         XCTAssertEqual(result, 3.0)
     }
     
-    func test_WorkHours_1SecondWorkHours_AccountedFor() {
-        let obs = self.entriesService.total.asObservable().subscribeOn(self.scheduler)
-        let enterDate = Date()
-        let exitDate = enterDate.addingTimeInterval(4.0)
-        self.entriesService.entryAction.value = EntriesService.EntryAction.enter(enterDate);
-        self.entriesService.entryAction.value = EntriesService.EntryAction.exit(exitDate)
-        XCTAssertEqual(3.0, try! obs.toBlocking().first()!)
-    }
-    
     func test_WorkHours_2CompleteEventsInOneDay_AccountedFor() {
-        let obs = self.entriesService.total.asObservable().skip(1).subscribeOn(self.scheduler)
-        self.createEntries(count: 2)
-        XCTAssertEqual(7.0, try! obs.toBlocking().first()!)
+        let disposeBag = DisposeBag()
+        let exp = expectation(description: "")
+        exp.isInverted = true
+        var result: TimeInterval!
+        self.entriesService.total.asObservable().subscribe(onNext: { (total) in
+            result = total
+        }).disposed(by: disposeBag)
+        self.createEntries(days: 1, eventsInADay: 2)
+        waitForExpectations(timeout: 1.0) { (error) in
+            guard error == nil else {
+                XCTFail(error!.localizedDescription)
+                return
+            }
+        }
+        XCTAssertEqual(result, 7.0)
     }
     
     func test_WorkHours_multiCompleteEventsInOneDay_AccountedFor() {
-        let obs = self.entriesService.total.asObservable().skip(1).subscribeOn(self.scheduler)
-        self.createEntries(count: 5)
-        XCTAssertEqual(19.0, try! obs.toBlocking().first()!)
+        let disposeBag = DisposeBag()
+        let exp = expectation(description: "")
+        exp.isInverted = true
+        var result: TimeInterval!
+        self.entriesService.total.asObservable().subscribe(onNext: { (total) in
+            result = total
+        }).disposed(by: disposeBag)
+        self.createEntries(days: 1, eventsInADay: 5)
+        waitForExpectations(timeout: 1.0) { (error) in
+            guard error == nil else {
+                XCTFail(error!.localizedDescription)
+                return
+            }
+        }
+        XCTAssertEqual(result, 19.0)
     }
     
-    fileprivate func createEntries(count: Int, completeEvents: Bool = true) {
+    func test_WorkHours_multiDays_AccountedFor() {
+        let disposeBag = DisposeBag()
+        let exp = expectation(description: "")
+        exp.isInverted = true
+        var result: TimeInterval!
+        self.entriesService.total.asObservable().subscribe(onNext: { (total) in
+            result = total
+        }).disposed(by: disposeBag)
+        self.createEntries(days: 2, eventsInADay: 3, completeEvents: false)
+        waitForExpectations(timeout: 1.0) { (error) in
+            guard error == nil else {
+                XCTFail(error!.localizedDescription)
+                return
+            }
+        }
+        XCTAssertEqual(result, 14.0)
+    }
+    
+    fileprivate func createEntries(days: Int, eventsInADay: Int, completeEvents: Bool = true) {
+        if days == 0 {
+            return
+        }
+        var startDate = Date().beginning(of: .day)!
+        for _ in 0 ..< days {
+            createEntries(startDate: startDate, count: eventsInADay, completeEvents: completeEvents)
+            startDate.add(.day, value: 1)
+        }
+    }
+    
+    fileprivate func createEntries(startDate: Date, count: Int, completeEvents: Bool = true) {
         if count == 0 { return }
-        var enterDate = Date().beginning(of: .day)!
+        var enterDate = startDate
         var exitDate = enterDate.addingTimeInterval(4.0)
         for _ in 0 ..< count - 1 {
             self.entriesService.entryAction.value = EntriesService.EntryAction.enter(enterDate);
