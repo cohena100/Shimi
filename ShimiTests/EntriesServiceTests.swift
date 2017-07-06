@@ -12,6 +12,7 @@ import RxSwift
 import RxTest
 import RxBlocking
 import RxSwiftExt
+import SwifterSwift
 
 @testable import Shimi
 
@@ -39,22 +40,62 @@ class EntriesServiceTests: XCTestCase {
     }
     
     
-    func test_WorkHours_1SecondWorkHours_AccountedFor() {
+    func test_WorkHours_1SecondWorkHours_AccountedFor_naive() {
+        let disposeBag = DisposeBag()
         let exp = expectation(description: "sfds")
-        let _ = self.entriesService.total.asObservable().skip(2).subscribe(onNext: { (total) in
-            print("total: \(total)")
+        var result: TimeInterval!
+        self.entriesService.total.asObservable().skip(2).subscribe(onNext: { (total) in
+            result = total
             exp.fulfill()
-        }, onError: nil, onCompleted: nil, onDisposed: nil)
+        }).disposed(by: disposeBag)
         let enterDate = Date()
         let exitDate = enterDate.addingTimeInterval(4.0)
         self.entriesService.entryAction.value = EntriesService.EntryAction.enter(enterDate);
         self.entriesService.entryAction.value = EntriesService.EntryAction.exit(exitDate)
         waitForExpectations(timeout: 1.0) { (error) in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            guard error == nil else {
+                XCTFail(error!.localizedDescription)
+                return
             }
         }
-        
+        XCTAssertEqual(result, 3.0)
+    }
+    
+    func test_WorkHours_1SecondWorkHours_AccountedFor() {
+        let obs = self.entriesService.total.asObservable().subscribeOn(self.scheduler)
+        let enterDate = Date()
+        let exitDate = enterDate.addingTimeInterval(4.0)
+        self.entriesService.entryAction.value = EntriesService.EntryAction.enter(enterDate);
+        self.entriesService.entryAction.value = EntriesService.EntryAction.exit(exitDate)
+        XCTAssertEqual(3.0, try! obs.toBlocking().first()!)
+    }
+    
+    func test_WorkHours_2CompleteEventsInOneDay_AccountedFor() {
+        let obs = self.entriesService.total.asObservable().skip(1).subscribeOn(self.scheduler)
+        self.createEntries(count: 2)
+        XCTAssertEqual(7.0, try! obs.toBlocking().first()!)
+    }
+    
+    func test_WorkHours_multiCompleteEventsInOneDay_AccountedFor() {
+        let obs = self.entriesService.total.asObservable().skip(1).subscribeOn(self.scheduler)
+        self.createEntries(count: 5)
+        XCTAssertEqual(19.0, try! obs.toBlocking().first()!)
+    }
+    
+    fileprivate func createEntries(count: Int, completeEvents: Bool = true) {
+        if count == 0 { return }
+        var enterDate = Date().beginning(of: .day)!
+        var exitDate = enterDate.addingTimeInterval(4.0)
+        for _ in 0 ..< count - 1 {
+            self.entriesService.entryAction.value = EntriesService.EntryAction.enter(enterDate);
+            self.entriesService.entryAction.value = EntriesService.EntryAction.exit(exitDate)
+            enterDate = enterDate.addingTimeInterval(10.0)
+            exitDate = enterDate.addingTimeInterval(4.0)
+        }
+        self.entriesService.entryAction.value = EntriesService.EntryAction.enter(enterDate);
+        if completeEvents {
+            self.entriesService.entryAction.value = EntriesService.EntryAction.exit(exitDate)
+        }
     }
     
 }
