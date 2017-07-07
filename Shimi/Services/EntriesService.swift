@@ -12,6 +12,7 @@ import RealmSwift
 import NSObject_Rx
 import RxRealm
 import SwiftyBeaver
+import SwifterSwift
 
 class EntriesService: NSObject {
     
@@ -102,7 +103,22 @@ class EntriesService: NSObject {
                 currentDayEntries.append(entry)
             } else {
                 if Calendar.current.isDate(currentDayEntries[0].enter, inSameDayAs: entry.enter) {
-                    currentDayEntries.append(entry)
+                    if let exitDate = entry.exit {
+                        if Calendar.current.isDate(currentDayEntries[0].enter, inSameDayAs: exitDate) {
+                            currentDayEntries.append(entry)
+                        } else {
+                            let endOfDay = currentDayEntries[0].enter.end(of: .day)!.adding(.second, value: 1)
+                            let currentDayEntry = Entry(enter: entry.enter)
+                            currentDayEntry.exit = endOfDay
+                            currentDayEntries.append(currentDayEntry)
+                            result.append(currentDayEntries)
+                            let nextDayEntry = Entry(enter: endOfDay)
+                            nextDayEntry.exit = exitDate
+                            currentDayEntries = [nextDayEntry]
+                        }
+                    } else {
+                        currentDayEntries.append(entry)
+                    }
                 } else {
                     result.append(currentDayEntries)
                     currentDayEntries = [entry]

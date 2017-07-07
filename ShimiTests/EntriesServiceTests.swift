@@ -115,11 +115,56 @@ class EntriesServiceTests: XCTestCase {
         XCTAssertEqual(result, 14.0)
     }
     
-    fileprivate func createEntries(days: Int, eventsInADay: Int, completeEvents: Bool = true) {
+    func test_WorkHours_crossingDayEntry_AccountedFor() {
+        let disposeBag = DisposeBag()
+        let exp = expectation(description: "")
+        exp.isInverted = true
+        var result: TimeInterval!
+        self.entriesService.total.asObservable().subscribe(onNext: { (total) in
+            result = total
+        }).disposed(by: disposeBag)
+        self.createEntries(days: 1, eventsInADay: 3, completeEvents: true)
+        let startDateOfCrossingEntry = Date().end(of: .day)!.adding(.second, value: -2)
+        self.entriesService.entryAction.value = EntriesService.EntryAction.enter(startDateOfCrossingEntry);
+        let endDateOfCrossingEntry = startDateOfCrossingEntry.addingTimeInterval(4.0)
+        self.entriesService.entryAction.value = EntriesService.EntryAction.exit(endDateOfCrossingEntry)
+        waitForExpectations(timeout: 1.0) { (error) in
+            guard error == nil else {
+                XCTFail(error!.localizedDescription)
+                return
+            }
+        }
+        XCTAssertEqual(result, 14.0)
+    }
+    
+    func test_WorkHours_crossingDayEntryMultiDays_AccountedFor() {
+        let disposeBag = DisposeBag()
+        let exp = expectation(description: "")
+        exp.isInverted = true
+        var result: TimeInterval!
+        self.entriesService.total.asObservable().subscribe(onNext: { (total) in
+            result = total
+        }).disposed(by: disposeBag)
+        self.createEntries(days: 1, eventsInADay: 3, completeEvents: true)
+        let startDateOfCrossingEntry = Date().end(of: .day)!.adding(.second, value: -1)
+        self.entriesService.entryAction.value = EntriesService.EntryAction.enter(startDateOfCrossingEntry);
+        let endDateOfCrossingEntry = startDateOfCrossingEntry.addingTimeInterval(4.0)
+        self.entriesService.entryAction.value = EntriesService.EntryAction.exit(endDateOfCrossingEntry)
+        self.createEntries(initialDay: Date().adding(.day, value: 1).adding(.hour, value: 4), days: 1, eventsInADay: 3, completeEvents: true)
+        waitForExpectations(timeout: 1.0) { (error) in
+            guard error == nil else {
+                XCTFail(error!.localizedDescription)
+                return
+            }
+        }
+        XCTAssertEqual(result, 26.0)
+    }
+    
+    fileprivate func createEntries(initialDay: Date = Date().beginning(of: .day)!.adding(.hour, value: 4), days: Int, eventsInADay: Int, completeEvents: Bool = true) {
         if days == 0 {
             return
         }
-        var startDate = Date().beginning(of: .day)!
+        var startDate = initialDay
         for _ in 0 ..< days {
             createEntries(startDate: startDate, count: eventsInADay, completeEvents: completeEvents)
             startDate.add(.day, value: 1)
